@@ -26,6 +26,7 @@ static const Rule rules[] = {
 	{ "st-256color",	"st-256color",       	NULL,  		0, 		0,           	0,           	-1 },
 	{ "Chromium",  		"chromium",     	NULL,   	1 << 1,       	1,		0,           	-1 },
 	{ "TelegramDesktop",  	"telegram-desktop",     NULL,   	1 << 2,       	1,		0,           	-1 },
+	{ "mpv",  		"gl",     		NULL,   	1 << 3,       	1,		0,           	-1 },
 	{ "PPSSPPSDL",  	"PPSSPPSDL",     	NULL,   	1 << 4,       	1,		0,		-1 },
 	{ "dolphin-emu",  	"dolphin-emu",     	NULL,  		1 << 4,       	1,		0,          	-1 },
 	{ "mGBA",  		"AppRun.wrapped",     	NULL, 		1 << 4,       	1,		0,		-1 },
@@ -111,8 +112,12 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_period, 	tagmon,         		{.i = +1 } },
 	{ MODKEY,             		XK_F5,	   	quit,           		{0} },
 	{ ControlMask,             	XK_F5,	   	quit,           		{1} },
+
+	/*__dmenu_stuff_*/
+	/* modifier			key	   	function			argument */
 	{ MODKEY,                       XK_x,    	spawn,            		SHCMD("sysact")},
-	
+	{ MODKEY,                       XK_m,    	spawn,            		SHCMD("watchmedia")},
+	{ MODKEY,                       XK_a,    	spawn,            		SHCMD("addtonotes")},
 
 	/*__Switching_Tags__*/
 	/*  				key						tag no.*/
