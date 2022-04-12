@@ -10,10 +10,11 @@ static const char *fonts[]  =  { "JetBrainsMono Nerd Font:style:medium:size=10",
 static const char dmenufont[]       = "JetBrainsMono Nerd Font:style:medium:size=10";
 
 #include "/home/samisthefbi/.cache/wal/colors-wal-dwm.h"
+#include "layouts.c"
 
 /* tagging */
-//static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", };
-static const char *tags[] = { "", "", "", "", "", "", ""};
+static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", };
+//static const char *tags[] = { "", "", "", "", "", "", ""};
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -48,8 +49,8 @@ static const Layout layouts[] = {
 	{ "[Tiling]",		tile },    /* first entry is default */
 	{ "[Floating]",      	NULL },    /* no layout function means floating behavior */
 	{ "[Monocle]",      	monocle }, /* a single big window */
-	{ "[Spiral]",      spiral },
- 	{ "[Dwindle]",      dwindle },
+	{ "[Grid]",      	grid },
+ 	{ "[Dwindle]",      	dwindle },
 };
 
 /* key definitions */
