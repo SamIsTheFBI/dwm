@@ -51,6 +51,7 @@ static const Layout layouts[] = {
 	{ "[Monocle]",      	monocle }, /* a single big window */
 	{ "[Grid]",      	grid },
  	{ "[Dwindle]",      	dwindle },
+	{ NULL,       		NULL },
 };
 
 /* key definitions */
@@ -115,6 +116,8 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_period, 	tagmon,         		{.i = +1 } },
 	{ MODKEY,             		XK_F5,	   	quit,           		{0} },
 	{ ControlMask,             	XK_F5,	   	quit,           		{1} },
+	{ MODKEY|ControlMask,		XK_comma,  	cyclelayout,    		{.i = -1 } },
+	{ MODKEY|ControlMask,           XK_period, 	cyclelayout,    		{.i = +1 } },
 
 	/*__dmenu_stuff_*/
 	/* modifier			key	   	function			argument */
