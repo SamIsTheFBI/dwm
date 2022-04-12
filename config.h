@@ -118,6 +118,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_x,    	spawn,            		SHCMD("sysact")},
 	{ MODKEY,                       XK_m,    	spawn,            		SHCMD("watchmedia")},
 	{ MODKEY,                       XK_a,    	spawn,            		SHCMD("addtonotes")},
+	{ MODKEY,			XK_c,    	spawn,            		SHCMD("addtoclipboard")},
 
 	/*__Switching_Tags__*/
 	/*  				key						tag no.*/
