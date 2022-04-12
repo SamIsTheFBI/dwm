@@ -12,25 +12,27 @@ static const char dmenufont[]       = "JetBrainsMono Nerd Font:style:medium:size
 #include "/home/samisthefbi/.cache/wal/colors-wal-dwm.h"
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", };
-//static const char *tags[] = { "", "", "", "", ""};
+//static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", };
+static const char *tags[] = { "", "", "", "", "", ""};
 
 static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	// For tags mask, 1 << (n-1) where n is the tag number in which you want to open the app
+	// For tag masks, 1 << (n-1) where n is the tag number in which you want to open the app
 	
 	/* class		instance		title		tags		switchtotag    isfloating	monitor */
 	{ "st-256color",	"st-256color",       	NULL,  		0, 		0,           	0,           	-1 },
 	{ "Chromium",  		"chromium",     	NULL,   	1 << 1,       	1,		0,           	-1 },
 	{ "TelegramDesktop",  	"telegram-desktop",     NULL,   	1 << 2,       	1,		0,           	-1 },
-	{ "mpv",  		"gl",     		NULL,   	1 << 3,       	1,		0,           	-1 },
+	{ "Geany",  		"geany",     		NULL,   	1 << 3,       	1,		0,           	-1 },
 	{ "PPSSPPSDL",  	"PPSSPPSDL",     	NULL,   	1 << 4,       	1,		0,		-1 },
 	{ "dolphin-emu",  	"dolphin-emu",     	NULL,  		1 << 4,       	1,		0,          	-1 },
 	{ "mGBA",  		"AppRun.wrapped",     	NULL, 		1 << 4,       	1,		0,		-1 },
 	{ "Pcsx2",  		"pcsx2",     		NULL, 		1 << 4,       	1,		0,		-1 },
+	{ "mpv",  		"gl",     		NULL,   	1 << 5,       	1,		0,           	-1 },
+
 };
 
 /* layout(s) */
