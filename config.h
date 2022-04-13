@@ -28,9 +28,9 @@ static const Rule rules[] = {
 	{ "Chromium",  		"chromium",     	NULL,   	1 << 1,       	1,		0,           	-1 },
 	{ "TelegramDesktop",  	"telegram-desktop",     NULL,   	1 << 2,       	1,		0,           	-1 },
 	{ "Geany",  		"geany",     		NULL,   	1 << 3,       	1,		0,           	-1 },
-	{ "PPSSPPSDL",  	"PPSSPPSDL",     	NULL,   	1 << 4,       	1,		0,		-1 },
-	{ "dolphin-emu",  	"dolphin-emu",     	NULL,  		1 << 4,       	1,		0,          	-1 },
-	{ "mGBA",  		"AppRun.wrapped",     	NULL, 		1 << 4,       	1,		0,		-1 },
+	{ "PPSSPPSDL",  	"PPSSPPSDL",     	NULL,   	1 << 4,       	1,		0,		-1 },   //PPSSPP AppImage
+	{ "dolphin-emu",  	"dolphin-emu",     	NULL,  		1 << 4,       	1,		0,          	-1 },	// pacman
+	{ "mGBA",  		"AppRun.wrapped",     	NULL, 		1 << 4,       	1,		0,		-1 },   //mGBA AppImage
 	{ "Pcsx2",  		"pcsx2",     		NULL, 		1 << 4,       	1,		0,		-1 },
 	{ "mpv",  		"gl",     		NULL,   	1 << 5,       	1,		0,           	-1 },
 	{ "Pcmanfm",  		"pcmanfm",     		NULL,   	1 << 6,       	1,		0,           	-1 },
@@ -70,9 +70,9 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont};
 static const char *termcmd[]        = { "st",                NULL };
 static const char *browsercmd[]     = { "chromium",          NULL };
-static const char *chatapp[]        = { "telegram-desktop",  NULL};
-//static const char *processview[]    = { "htop",              NULL };
-
+static const char *chatapp[]        = { "telegram-desktop",  NULL };
+static const char *txteditor[]	    = { "geany",             NULL };
+static const char *fileman[]	    = { "pcmanfm", 	     NULL };
 
 #include <X11/XF86keysym.h>
 
@@ -85,7 +85,9 @@ static Key keys[] = {
 	{MODKEY|ShiftMask,             XK_Return, 	spawn,                    	{.v = termcmd } },
 	{MODKEY|ShiftMask,             XK_w,      	spawn,                    	{.v = browsercmd} },
 	{MODKEY|ShiftMask,             XK_m,      	spawn,                    	{.v = chatapp} },
-	//{MODKEY|ShiftMask,             XK_h,      	spawn,                    	{.v = processview} },
+	{MODKEY|ShiftMask,             XK_h,      	spawn,                    	SHCMD("st htop") },
+	{MODKEY|ShiftMask,             XK_e,      	spawn,      			{.v = txteditor} },
+	{MODKEY,             	       XK_e,      	spawn,      			{.v = fileman} },
 
 
         /*__Window_Management_ig_*/
@@ -93,25 +95,25 @@ static Key keys[] = {
 	{ MODKEY,                       XK_b,      	togglebar,      		{0} },
 	{ MODKEY,                       XK_Left,   	focusstack,     		{.i = +1 } },
 	{ MODKEY,                       XK_Right,  	focusstack,     		{.i = -1 } },
-	{ MODKEY,                       XK_i,      	incnmaster,     		{.i = +1 } },
-	{ MODKEY,                       XK_d,      	incnmaster,     		{.i = -1 } },
-	{ MODKEY,                       XK_h,      	setmfact,       		{.f = -0.05} },
-	{ MODKEY,                       XK_l,      	setmfact,       		{.f = +0.05} },
+	{ MODKEY,                       XK_bracketleft, incnmaster,     		{.i = +1 } },
+	{ MODKEY,                       XK_bracketright,incnmaster,     		{.i = -1 } },
+	{ MODKEY,                       XK_comma,      	setmfact,       		{.f = -0.05} },
+	{ MODKEY,                       XK_period,      setmfact,       		{.f = +0.05} },
 	{ MODKEY,                       XK_Return, 	zoom,           		{0} },
 	{ MODKEY,                       XK_Tab,    	view,           		{0} },
 	{ MODKEY|ShiftMask,             XK_c,      	killclient,     		{0} },
 	{ MODKEY,             		XK_f,      	togglefullscr,  		{0} },
-	{ MODKEY,                       XK_t,      	setlayout,      		{.v = &layouts[0]} },
-	{ MODKEY,                       XK_y,      	setlayout,      		{.v = &layouts[1]} },
-	{ MODKEY,                       XK_u,      	setlayout,      		{.v = &layouts[2]} },
-	{ MODKEY,                       XK_r,      	setlayout,      		{.v = &layouts[3]} },
-	{ MODKEY,                       XK_e,      	setlayout,      		{.v = &layouts[4]} },
+	{ MODKEY,                       XK_t,      	setlayout,      		{.v = &layouts[0]} },  //Tiling
+	{ MODKEY,                       XK_y,      	setlayout,      		{.v = &layouts[1]} },   //Floating
+	{ MODKEY,                       XK_u,      	setlayout,      		{.v = &layouts[2]} },    //Monocle
+	{ MODKEY,                       XK_i,      	setlayout,      		{.v = &layouts[3]} },     //Grid
+	{ MODKEY,                       XK_o,      	setlayout,      		{.v = &layouts[4]} },    //Dwindle
 	{ MODKEY,                       XK_space,  	setlayout,      		{0} },
 	{ MODKEY|ShiftMask,             XK_space,  	togglefloating, 		{0} },
 	{ MODKEY,                       XK_0,      	view,           		{.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      	tag,            		{.ui = ~0 } },
-	{ MODKEY,                       XK_comma,  	focusmon,       		{.i = -1 } },
-	{ MODKEY,                       XK_period, 	focusmon,       		{.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_Left,  	focusmon,       		{.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_Right, 	focusmon,       		{.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  	tagmon,         		{.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, 	tagmon,         		{.i = +1 } },
 	{ MODKEY,             		XK_F5,	   	quit,           		{0} },
