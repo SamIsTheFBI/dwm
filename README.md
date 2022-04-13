@@ -8,7 +8,7 @@
 | super+p               | dmenu app launcher            |
 | super+shift+enter     | launch st terminal            |
 | super+shift+w         | launch Chromium web browser   |
-| super+shift+m         | launch Telegrammessaging app  |
+| super+shift+m         | launch Telegram messaging app  |
 | super+shift+w         | launch htop in st terminal    |
 | super+shift+e         | launch Geany text editor      |
 | super+e               | launch pcmanfm file manager   |
