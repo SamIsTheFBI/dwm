@@ -5,8 +5,7 @@ static const int swallowfloating    = 0;        /* 1 means swallow floating wind
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const Bool viewontag         = False;     /* Switch view on tag switch */
-//static const char *fonts[]          = {"fontawesome:size=10:antialias=true:autohint=true","NotoSans-Regular:size=10","SourceHanSansJP-Normal:size=10", "JetBrains Mono:size=10" };    //{"JetBrains Mono:size=10", "fontawesome:size=10:antialias=true:autohint=true"};
-static const char *fonts[]  =  { "JetBrainsMono Nerd Font:style:medium:size=10","Material Design Icons-Regular:size=10" };
+static const char *fonts[]  =  { "JetBrainsMono Nerd Font:style:medium:size=10","Noto Sans Mono CJK JP:style=SemiBold:size=10" };
 static const char dmenufont[]       = "JetBrainsMono Nerd Font:style:medium:size=10";
 
 #include "colors-wal-dwm.h"
@@ -28,7 +27,7 @@ static const Rule rules[] = {
 	{ "Chromium",  		"chromium",     	NULL,   	1 << 1,       	1,		0,           	-1 },
 	{ "TelegramDesktop",  	"telegram-desktop",     NULL,   	1 << 2,       	1,		0,           	-1 },
 	{ "Geany",  		"geany",     		NULL,   	1 << 3,       	1,		0,           	-1 },
-	{ "PPSSPPSDL",  	"PPSSPPSDL",     	NULL,   	1 << 4,       	1,		0,		-1 },   //PPSSPP AppImage
+	{ "PPSSPPSDL",  	"PPSSPPSDL",     	NULL,   	1 << 4,       	1,		1,		-1 },   //PPSSPP AppImage
 	{ "dolphin-emu",  	"dolphin-emu",     	NULL,  		1 << 4,       	1,		0,          	-1 },	// pacman
 	{ "mGBA",  		"AppRun.wrapped",     	NULL, 		1 << 4,       	1,		0,		-1 },   //mGBA AppImage
 	{ "Pcsx2",  		"pcsx2",     		NULL, 		1 << 4,       	1,		0,		-1 },
