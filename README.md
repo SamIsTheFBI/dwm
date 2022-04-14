@@ -1,4 +1,4 @@
-## (My) Default Keybindings:
+## My Keybindings:
 
 
 - ### App Shortcuts:
