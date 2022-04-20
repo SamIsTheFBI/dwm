@@ -32,7 +32,7 @@ static const Rule rules[] = {
 	{ "mGBA",  		"AppRun.wrapped",     	NULL, 		1 << 4,       	1,		0,		-1 },   //mGBA AppImage
 	{ "Pcsx2",  		"pcsx2",     		NULL, 		1 << 4,       	1,		0,		-1 },
 	{ "mpv",  		"gl",     		NULL,   	1 << 5,       	1,		0,           	-1 },
-	{ "Pcmanfm",  		"pcmanfm",     		NULL,   	1 << 6,       	1,		0,           	-1 },
+	{ "Thunar",  		"thunar",     		NULL,   	1 << 6,       	1,		0,           	-1 },
 };
 
 /* layout(s) */
@@ -71,7 +71,7 @@ static const char *termcmd[]        = { "st",                NULL };
 static const char *browsercmd[]     = { "chromium",          NULL };
 static const char *chatapp[]        = { "telegram-desktop",  NULL };
 static const char *txteditor[]	    = { "geany",             NULL };
-static const char *fileman[]	    = { "pcmanfm", 	     NULL };
+static const char *fileman[]	    = { "thunar", 	     NULL };
 
 #include <X11/XF86keysym.h>
 
