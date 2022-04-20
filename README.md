@@ -73,3 +73,4 @@
 - zoomswap
 - actualfullscreen
 - restartsig
+- fullgaps
