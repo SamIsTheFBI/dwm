@@ -74,3 +74,5 @@
 - actualfullscreen
 - restartsig
 - fullgaps
+- ewmhtags
+- focusonnetactive
