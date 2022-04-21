@@ -55,6 +55,7 @@ static const Layout layouts[] = {
 
 /* key definitions */
 #define MODKEY Mod4Mask
+#define ALTKEY Mod1Mask
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
@@ -123,6 +124,7 @@ static Key keys[] = {
 	{ ControlMask,             	XK_F5,	   	quit,           		{1} },
 	{ MODKEY|ControlMask,		XK_comma,  	cyclelayout,    		{.i = -1 } },
 	{ MODKEY|ControlMask,           XK_period, 	cyclelayout,    		{.i = +1 } },
+	{ ALTKEY, 			XK_Tab, 	spawn,				SHCMD("rofi -show window")},
 
 	/*__dmenu_stuff_*/
 	/* modifier			key	   	function			argument */

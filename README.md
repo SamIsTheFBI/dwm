@@ -40,7 +40,7 @@
 | super+control+1 2 3 4 5 6 7 8 | add windows from different tags to current tag |
 | super+shift+1 2 3 4 5 6 7 8 | move active window to other tags |
 | super+shift+control+1 2 3 4 5 6 7 8 | tag active window to other tags|
-
+| alt+tab		| Switch windows using rofi |
 
 - ### dmenu/rofi Keybindings (in case I switch to rofi I want same keybindings)
 
