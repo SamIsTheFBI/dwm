@@ -1,5 +1,5 @@
 /* appearance */
-static const unsigned int borderpx  = 0;        /* border pixel of windows */
+static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const Gap default_gap	    = {.isgap = 1, .realgap = 10, .gappx = 0};   /* gappx sets the default gap width*/
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
@@ -7,9 +7,17 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const Bool viewontag         = False;     /* Switch view on tag switch */
 static const char *fonts[]  =  { "JetBrainsMono Nerd Font:style:medium:size=10","Noto Sans Mono CJK JP:style=SemiBold:size=10" };
 static const char dmenufont[]       = "JetBrainsMono Nerd Font:style:medium:size=10";
+static const unsigned int baralpha = 0xd0;
+static const unsigned int borderalpha = OPAQUE;
 
 #include "colors-wal-dwm.h"
 #include "layouts.c"
+
+static const unsigned int alphas[][3]      = {
+		/*               fg      bg        border     */
+		[SchemeNorm] = { OPAQUE, baralpha, borderalpha },
+		[SchemeSel]  = { OPAQUE, baralpha, borderalpha },
+	};
 
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", };

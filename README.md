@@ -76,3 +76,4 @@
 - fullgaps
 - ewmhtags
 - focusonnetactive
+- alpha
