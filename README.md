@@ -66,7 +66,7 @@
 
 ## Patches added (some i forgor):
 
-- cyclelayout
+- cyclelayouts
 - gridmode
 - fibonacci
 - switchtotag
@@ -77,3 +77,4 @@
 - ewmhtags
 - focusonnetactive
 - alpha
+- placemouse

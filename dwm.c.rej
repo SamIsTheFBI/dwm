@@ -1,0 +1,10 @@
+--- dwm.c
++++ dwm.c
+@@ -95,6 +97,7 @@ struct Client {
+ 	int bw, oldbw;
+ 	unsigned int tags;
+ 	int isfixed, isfloating, isurgent, neverfocus, oldstate, isfullscreen;
++	int beingmoved;
+ 	Client *next;
+ 	Client *snext;
+ 	Monitor *mon;
