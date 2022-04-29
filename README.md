@@ -78,3 +78,4 @@
 - focusonnetactive
 - alpha
 - placemouse
+- resizecorners
