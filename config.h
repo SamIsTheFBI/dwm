@@ -11,7 +11,6 @@ static const unsigned int baralpha = 0xd0;
 static const unsigned int borderalpha = OPAQUE;
 
 #include "colors-wal-dwm.h"
-#include "layouts.c"
 
 static const unsigned int alphas[][3]      = {
 		/*               fg      bg        border     */
@@ -50,14 +49,15 @@ static const int resizehints = 1;    /* 1 means respect size hints in tiled resi
 static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
 
 #include "fibonacci.c"
+#include "gaplessgrid.c"
 
 static const Layout layouts[] = {
 	/* symbol		arrange function */
-	{ "[Tiling]",		tile },    /* first entry is default */
-	{ "[Floating]",      	NULL },    /* no layout function means floating behavior */
-	{ "[Monocle]",      	monocle }, /* a single big window */
-	{ "[Grid]",      	grid },
- 	{ "[Dwindle]",      	dwindle },
+	{ "[]=",		tile },    /* first entry is default */
+	{ "><>",      	NULL },    /* no layout function means floating behavior */
+	{ "[Monocle]",      	monocle }, /* a single big window */	
+	{ "###",		gaplessgrid },
+ 	{ "[\]",      	dwindle },
 	{ NULL,       		NULL },
 };
 
@@ -114,7 +114,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_t,      	setlayout,      		{.v = &layouts[0]} },  //Tiling
 	{ MODKEY,                       XK_y,      	setlayout,      		{.v = &layouts[1]} },   //Floating
 	{ MODKEY,                       XK_u,      	setlayout,      		{.v = &layouts[2]} },    //Monocle
-	{ MODKEY,                       XK_i,      	setlayout,      		{.v = &layouts[3]} },     //Grid
+	{ MODKEY,                       XK_i,      	setlayout,      		{.v = &layouts[3]} },     //Gapless grid
 	{ MODKEY,                       XK_o,      	setlayout,      		{.v = &layouts[4]} },    //Dwindle
 	{ MODKEY,                       XK_space,  	setlayout,      		{0} },
 	{ MODKEY|ShiftMask,             XK_space,  	togglefloating, 		{0} },

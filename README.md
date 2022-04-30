@@ -68,7 +68,7 @@
 ## Patches added (some i forgor):
 
 - cyclelayouts
-- gridmode
+- gaplessgrid
 - fibonacci
 - switchtotag
 - zoomswap

@@ -210,7 +210,6 @@ static void movemouse(const Arg *arg);
 static void moveorplace(const Arg *arg);
 static Client *nexttiled(Client *c);
 static void placemouse(const Arg *arg);
-static void pop(Client *);
 static void propertynotify(XEvent *e);
 static void quit(const Arg *arg);
 static Client *recttoclient(int x, int y, int w, int h);
@@ -1428,15 +1427,6 @@ placemouse(const Arg *arg)
 	if (nx != -9999)
 		resize(c, nx, ny, c->w, c->h, 0);
 	arrangemon(c->mon);
-}
-
-void
-pop(Client *c)
-{
-	detach(c);
-	attach(c);
-	focus(c);
-	arrange(c->mon);
 }
 
 void
