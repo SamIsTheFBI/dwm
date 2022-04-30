@@ -68,8 +68,6 @@
 ## Patches added (some i forgor):
 
 - cyclelayouts
-- gaplessgrid
-- fibonacci
 - switchtotag
 - zoomswap
 - actualfullscreen
@@ -81,3 +79,4 @@
 - placemouse
 - resizecorners
 - notitle
+- vanitygaps
