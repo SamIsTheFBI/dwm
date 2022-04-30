@@ -1,7 +1,7 @@
-From 969dbbc548f16da5d94630e3d54e9c96c5296520 Mon Sep 17 00:00:00 2001
-From: Ryan Kes <alrayyes@gmail.com>
-Date: Thu, 28 Mar 2019 14:36:07 +0100
-Subject: [PATCH] dwm-notitle-6.2
+From a3a7e94f59553689656871a65ea9ce90169a7c91 Mon Sep 17 00:00:00 2001
+From: birdalicous <jack.bird@durham.ac.uk>
+Date: Thu, 15 Jul 2021 12:28:29 +0100
+Subject: [PATCH] notitle patch applied#
 
 ---
  config.def.h |  1 -
@@ -9,10 +9,10 @@ Subject: [PATCH] dwm-notitle-6.2
  2 files changed, 4 insertions(+), 17 deletions(-)
 
 diff --git a/config.def.h b/config.def.h
-index 1c0b587..19330cd 100644
+index a2ac963..eac20b4 100644
 --- a/config.def.h
 +++ b/config.def.h
-@@ -102,7 +102,6 @@ static Button buttons[] = {
+@@ -103,7 +103,6 @@ static Button buttons[] = {
  	/* click                event mask      button          function        argument */
  	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
  	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
@@ -21,7 +21,7 @@ index 1c0b587..19330cd 100644
  	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
  	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
 diff --git a/dwm.c b/dwm.c
-index 4465af1..bcf5cb1 100644
+index 5e4d494..6cd9fb7 100644
 --- a/dwm.c
 +++ b/dwm.c
 @@ -64,8 +64,8 @@ enum { NetSupported, NetWMName, NetWMState, NetWMCheck,
@@ -35,11 +35,11 @@ index 4465af1..bcf5cb1 100644
  
  typedef union {
  	int i;
-@@ -439,10 +439,8 @@ buttonpress(XEvent *e)
+@@ -440,10 +440,8 @@ buttonpress(XEvent *e)
  			arg.ui = 1 << i;
  		} else if (ev->x < x + blw)
  			click = ClkLtSymbol;
--		else if (ev->x > selmon->ww - TEXTW(stext))
+-		else if (ev->x > selmon->ww - (int)TEXTW(stext))
 -			click = ClkStatusText;
  		else
 -			click = ClkWinTitle;
@@ -47,10 +47,10 @@ index 4465af1..bcf5cb1 100644
  	} else if ((c = wintoclient(ev->window))) {
  		focus(c);
  		restack(selmon);
-@@ -729,15 +727,8 @@ drawbar(Monitor *m)
+@@ -730,15 +728,8 @@ drawbar(Monitor *m)
  	x = drw_text(drw, x, 0, w, bh, lrpad / 2, m->ltsymbol, 0);
  
- 	if ((w = m->ww - sw - x) > bh) {
+ 	if ((w = m->ww - tw - x) > bh) {
 -		if (m->sel) {
 -			drw_setscheme(drw, scheme[m == selmon ? SchemeSel : SchemeNorm]);
 -			drw_text(drw, x, 0, w, bh, lrpad / 2, m->sel->name, 0);
@@ -63,7 +63,7 @@ index 4465af1..bcf5cb1 100644
  	}
  	drw_map(drw, m->barwin, 0, 0, m->ww, bh);
  }
-@@ -1235,11 +1226,8 @@ propertynotify(XEvent *e)
+@@ -1236,11 +1227,8 @@ propertynotify(XEvent *e)
  			drawbars();
  			break;
  		}
@@ -77,5 +77,5 @@ index 4465af1..bcf5cb1 100644
  			updatewindowtype(c);
  	}
 -- 
-2.21.0
+2.32.0
 
