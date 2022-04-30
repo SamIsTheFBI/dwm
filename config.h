@@ -165,8 +165,8 @@ static Key keys[] = {
 	{ MODKEY, 		XK_Print, 			spawn, 		SHCMD("screencap fullsave")},
 	{ ShiftMask, 		XK_Print, 			spawn,		SHCMD("screencap selectcopy")},
 	{ MODKEY|ShiftMask, 	XK_Print, 			spawn,		SHCMD("screencap selectsave")},
-	{ 0,			XF86XK_AudioNext,		spawn, 		SHCMD("mpc next | song_notif")},
-	{ 0,			XF86XK_AudioPrev,		spawn, 		SHCMD("mpc prev | song_notif")},	
+	{ 0,			XF86XK_AudioNext,		spawn, 		SHCMD("mpc next")},
+	{ 0,			XF86XK_AudioPrev,		spawn, 		SHCMD("mpc prev")},	
 	{ 0,			XF86XK_AudioPlay,		spawn, 		SHCMD("mpc toggle")},
 };
 
