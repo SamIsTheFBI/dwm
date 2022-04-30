@@ -167,7 +167,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask, 	XK_Print, 			spawn,		SHCMD("screencap selectsave")},
 	{ 0,			XF86XK_AudioNext,		spawn, 		SHCMD("mpc next | song_notif")},
 	{ 0,			XF86XK_AudioPrev,		spawn, 		SHCMD("mpc prev | song_notif")},	
-	{ 0,			XF86XK_AudioPlay,		spawn, 		SHCMD("mpc toggle | song_notif")},
+	{ 0,			XF86XK_AudioPlay,		spawn, 		SHCMD("mpc toggle")},
 };
 
 /* button definitions */
@@ -176,7 +176,7 @@ static Button buttons[] = {
 	/* click                event mask      button          function        argument */
 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
 	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
-	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
+//	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
 	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
 //	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button1,        moveorplace,    {.i = 1} },

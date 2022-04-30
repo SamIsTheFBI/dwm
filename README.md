@@ -80,3 +80,4 @@
 - alpha
 - placemouse
 - resizecorners
+- notitle
