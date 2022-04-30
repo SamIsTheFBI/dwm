@@ -69,9 +69,11 @@
 - actualfullscreen
 - alpha
 - cyclelayouts
+- dragmfact
 - ewmhtags
 - focusonnetactive
 - notitle
+- pertag
 - placemouse
 - resizecorners
 - restartsig
