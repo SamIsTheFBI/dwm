@@ -3,7 +3,7 @@ static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const Gap default_gap	    = {.isgap = 1, .realgap = 5, .gappx = 0};   /* gappx sets the default gap width*/
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int gappih    = 5;       /* horiz inner gap between windows */
-static const unsigned int gappiv    = 5;       /* vert inner gap between windows */
+static const unsigned int gappiv    = 4;       /* vert inner gap between windows */
 static const unsigned int gappoh    = 5;       /* horiz outer gap between windows and screen edge */
 static const unsigned int gappov    = 5;       /* vert outer gap between windows and screen edge */
 static const int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
@@ -138,10 +138,12 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_Right, 	focusmon,       		{.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  	tagmon,         		{.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, 	tagmon,         		{.i = +1 } },
-	{ MODKEY,                       XK_minus,  	setgaps,        		{.i = -5 } },
-	{ MODKEY,                       XK_equal,  	setgaps,        		{.i = +5 } },
-	{ MODKEY|ShiftMask,             XK_minus,  	setgaps,        		{.i = GAP_RESET } },
-	{ MODKEY|ShiftMask,             XK_equal,  	setgaps,       			{.i = GAP_TOGGLE} },
+	{ MODKEY,                       XK_minus,  	incrgaps,        		{.i = -5 } },	
+	{ MODKEY|ALTKEY,                XK_minus,  	incrigaps,        		{.i = -5 } },
+	{ MODKEY,                       XK_equal,  	incrgaps,        		{.i = +5 } },	
+	{ MODKEY|ALTKEY,                XK_equal,  	incrigaps,        		{.i = +5 } },
+	{ MODKEY|ShiftMask,             XK_minus,  	togglegaps,     		{0} },
+	{ MODKEY|ShiftMask,             XK_equal,  	defaultgaps,    		{0} },
 	{ MODKEY,             		XK_F5,	   	quit,           		{0} },
 	{ ControlMask,             	XK_F5,	   	quit,           		{1} },
 	{ MODKEY|ControlMask,		XK_comma,  	cyclelayout,    		{.i = -1 } },
