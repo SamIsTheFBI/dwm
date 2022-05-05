@@ -156,6 +156,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_m,    	spawn,            		SHCMD("watchmedia")},
 	{ MODKEY,                       XK_a,    	spawn,            		SHCMD("addtonotes")},
 	{ MODKEY,			XK_c,    	spawn,            		SHCMD("addtoclipboard")},
+	{ MODKEY,			XK_s,    	spawn,            		SHCMD("playt-beta")},
 
 	/*__Switching_Tags__*/
 	/*  				key						tag no.*/
@@ -181,9 +182,9 @@ static Key keys[] = {
 	{ MODKEY, 		XK_Print, 			spawn, 		SHCMD("screencap fullsave")},
 	{ ShiftMask, 		XK_Print, 			spawn,		SHCMD("screencap selectcopy")},
 	{ MODKEY|ShiftMask, 	XK_Print, 			spawn,		SHCMD("screencap selectsave")},
-	{ 0,			XF86XK_AudioNext,		spawn, 		SHCMD("mpc next")},
-	{ 0,			XF86XK_AudioPrev,		spawn, 		SHCMD("mpc prev")},	
-	{ 0,			XF86XK_AudioPlay,		spawn, 		SHCMD("mpc toggle")},
+	{ 0,			XF86XK_AudioNext,		spawn, 		SHCMD("playerctl -p spotify next")},
+	{ 0,			XF86XK_AudioPrev,		spawn, 		SHCMD("playerctl -p spotify previous")},	
+	{ 0,			XF86XK_AudioPlay,		spawn, 		SHCMD("playerctl -p spotify play-pause")},
 };
 
 /* button definitions */
