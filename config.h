@@ -36,7 +36,7 @@ static const Rule rules[] = {
 	
 	/* class		instance		title		tags		switchtotag    isfloating	monitor */
 	{ "st-256color",	"st-256color",       	NULL,  		0, 		0,           	0,           	-1 },
-	{ "Min",  		"min",     	NULL,   	1 << 1,       	1,		0,           	-1 },
+	{ "Chromium",  		"chromium",     	NULL,   	1 << 1,       	1,		0,           	-1 },
 	{ "TelegramDesktop",  	"telegram-desktop",     NULL,   	1 << 2,       	1,		0,           	-1 },
 	{ "Geany",  		"geany",     		NULL,   	1 << 3,       	1,		0,           	-1 },
 	{ "PPSSPPSDL",  	"PPSSPPSDL",     	NULL,   	1 << 4,       	1,		1,		-1 },   //PPSSPP AppImage
@@ -91,7 +91,7 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont};
 static const char *termcmd[]        = { "st",                NULL };
-static const char *browsercmd[]     = { "min",          NULL };
+static const char *browsercmd[]     = { "chromium",          NULL };
 static const char *chatapp[]        = { "telegram-desktop",  NULL };
 static const char *txteditor[]	    = { "geany",             NULL };
 static const char *fileman[]	    = { "thunar", 	     NULL };
@@ -154,8 +154,7 @@ static Key keys[] = {
 	/* modifier			key	   	function			argument */
 	{ MODKEY,                       XK_x,    	spawn,            		SHCMD("sysact")},
 	{ MODKEY,                       XK_m,    	spawn,            		SHCMD("watchmedia")},
-	{ MODKEY,                       XK_a,    	spawn,            		SHCMD("addtonotes")},
-	{ MODKEY,			XK_c,    	spawn,            		SHCMD("addtoclipboard")},
+	{ MODKEY,			XK_a,    	spawn,            		SHCMD("rofi -show drun -show-icons")},
 	{ MODKEY,			XK_s,    	spawn,            		SHCMD("playt-beta")},
 
 	/*__Switching_Tags__*/
@@ -182,9 +181,9 @@ static Key keys[] = {
 	{ MODKEY, 		XK_Print, 			spawn, 		SHCMD("screencap fullsave")},
 	{ ShiftMask, 		XK_Print, 			spawn,		SHCMD("screencap selectcopy")},
 	{ MODKEY|ShiftMask, 	XK_Print, 			spawn,		SHCMD("screencap selectsave")},
-	{ 0,			XF86XK_AudioNext,		spawn, 		SHCMD("playerctl -p spotify next")},
-	{ 0,			XF86XK_AudioPrev,		spawn, 		SHCMD("playerctl -p spotify previous")},	
-	{ 0,			XF86XK_AudioPlay,		spawn, 		SHCMD("playerctl -p spotify play-pause")},
+	{ 0,			XF86XK_AudioNext,		spawn, 		SHCMD("mpc next")},
+	{ 0,			XF86XK_AudioPrev,		spawn, 		SHCMD("mpc prev")},	
+	{ 0,			XF86XK_AudioPlay,		spawn, 		SHCMD("mpc toggle")},
 };
 
 /* button definitions */
