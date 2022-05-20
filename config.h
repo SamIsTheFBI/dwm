@@ -1,7 +1,7 @@
 /* appearance */
 static const unsigned int borderpx  	= 2;        /* border pixel of windows */
 static const Gap default_gap					= {.isgap = 1, .realgap = 5, .gappx = 0};   /* gappx sets the default gap width*/
-static const unsigned int snap      	= 32;       /* snap pixel */
+static const unsigned int snap      	= 2;       /* snap pixel */
 static const unsigned int gappih			= 5;       /* horiz inner gap between windows */
 static const unsigned int gappiv			= 4;       /* vert inner gap between windows */
 static const unsigned int gappoh			= 5;       /* horiz outer gap between windows and screen edge */
@@ -12,7 +12,7 @@ static const int topbar								= 1;        /* 0 means bottom bar */
 static const Bool viewontag						= False;     /* Switch view on tag switch */
 static const char *fonts[]						=  { "JetBrainsMono Nerd Font:style:medium:size=10","Noto Sans Mono CJK JP:style=SemiBold:size=10" };
 static const char dmenufont[]					= "JetBrainsMono Nerd Font:style:medium:size=10";
-static const unsigned int baralpha		= 0xd0;
+static const unsigned int baralpha		= 0xdf;
 static const unsigned int borderalpha = OPAQUE;
 
 #include "colors-wal-dwm.h"
@@ -156,6 +156,7 @@ static Key keys[] = {
 	{ MODKEY,      XK_m,    	spawn,      SHCMD("watchmedia")},
 	{ MODKEY,			 XK_a,    	spawn,      SHCMD("rofi -show drun -show-icons -theme ~/.config/rofi/applauncher.rasi")},
 	{ MODKEY,			 XK_s,    	spawn,      SHCMD("playt-beta")},
+	{ MODKEY,			 XK_c,    	spawn,      SHCMD("colpick")},
 
 	/*__Switching_Tags__*/
 	/*														tag no.*/
