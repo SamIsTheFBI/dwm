@@ -1,23 +1,23 @@
 /* appearance */
-static const unsigned int borderpx  	= 2;        /* border pixel of windows */
-static const Gap default_gap					= {.isgap = 1, .realgap = 5, .gappx = 0};   /* gappx sets the default gap width*/
+static const unsigned int borderpx		= 2;        /* border pixel of windows */
+static const Gap default_gap			= {.isgap = 1, .realgap = 5, .gappx = 0};   /* gappx sets the default gap width*/
 static const unsigned int snap      	= 2;       /* snap pixel */
-static const unsigned int gappih			= 5;       /* horiz inner gap between windows */
-static const unsigned int gappiv			= 4;       /* vert inner gap between windows */
-static const unsigned int gappoh			= 5;       /* horiz outer gap between windows and screen edge */
-static const unsigned int gappov			= 5;       /* vert outer gap between windows and screen edge */
-static const int smartgaps						= 0;        /* 1 means no outer gap when there is only one window */
-static const int showbar							= 1;        /* 0 means no bar */
-static const int topbar								= 1;        /* 0 means bottom bar */
-static const Bool viewontag						= False;     /* Switch view on tag switch */
-static const char *fonts[]						=  { "JetBrainsMono Nerd Font:style:medium:size=10","Noto Sans Mono CJK JP:style=SemiBold:size=10" };
-static const char dmenufont[]					= "JetBrainsMono Nerd Font:style:medium:size=10";
+static const unsigned int gappih		= 5;       /* horiz inner gap between windows */
+static const unsigned int gappiv		= 4;       /* vert inner gap between windows */
+static const unsigned int gappoh		= 5;       /* horiz outer gap between windows and screen edge */
+static const unsigned int gappov		= 5;       /* vert outer gap between windows and screen edge */
+static const int smartgaps				= 0;        /* 1 means no outer gap when there is only one window */
+static const int showbar				= 1;        /* 0 means no bar */
+static const int topbar					= 1;        /* 0 means bottom bar */
+static const Bool viewontag				= False;     /* Switch view on tag switch */
+static const char *fonts[]				=  { "JetBrainsMono Nerd Font:style:medium:size=10","Noto Sans Mono CJK JP:style=SemiBold:size=10" };
+static const char dmenufont[]			= "JetBrainsMono Nerd Font:style:medium:size=10";
 static const unsigned int baralpha		= 0xdf;
-static const unsigned int borderalpha = OPAQUE;
-static const unsigned int ulinepad	= 5;	/* horizontal padding between the underline and tag */
+static const unsigned int borderalpha	= OPAQUE;
+static const unsigned int ulinepad		= 5;	/* horizontal padding between the underline and tag */
 static const unsigned int ulinestroke	= 2;	/* thickness / height of the underline */
 static const unsigned int ulinevoffset	= 0;	/* how far above the bottom of the bar the line should appear */
-static const int ulineall 		= 0;	/* 1 to show underline on all tags, 0 for just the active ones */
+static const int ulineall 				= 0;	/* 1 to show underline on all tags, 0 for just the active ones */
 
 #include "colors-wal-dwm.h"
 
@@ -38,17 +38,17 @@ static const Rule rules[] = {
 	 */
 	// For tag masks, 1 << (n-1) where n is the tag number in which you want to open the app
 	
-	/* class						instance						title			tags					switchtotag    	isfloating				monitor */
-	{ "st-256color",		"st-256color",   		NULL,  		0, 							0,           	0,           	-1 },
-	{ "Chromium",  			"chromium",					NULL,   	1 << 1,       	1,						0,           	-1 },
-	{ "TelegramDesktop","telegram-desktop", NULL,   	1 << 2,       	1,						0,           	-1 },
-	{ "Geany",  				"geany",     				NULL,   	1 << 3,       	1,						0,           	-1 },
-	{ "PPSSPPSDL",  		"PPSSPPSDL",     		NULL,   	1 << 4,       	1,						1,						-1 },   //PPSSPP AppImage
-	{ "dolphin-emu",  	"dolphin-emu",     	NULL,  		1 << 4,       	1,						0,          	-1 },		// pacman
-	{ "mGBA",  					"AppRun.wrapped",   NULL, 		1 << 4,       	1,						0,						-1 },   //mGBA AppImage
-	{ "Pcsx2",  				"pcsx2",     				NULL, 		1 << 4,       	1,						0,						-1 },
-	{ "mpv",  					"gl",     					NULL,   	1 << 5,       	1,						0,           	-1 },
-	{ "Thunar",  				"thunar",     			NULL,   	1 << 6,       	1,						0,           	-1 },
+	/* class				instance				title			tags		switchtotag	isfloating		monitor */
+	{ "st-256color",		"st-256color",   		NULL,  			0,				0,          0,           	-1 },
+	{ "Chromium",  			"chromium",				NULL,   		1 << 1,			1,			0,           	-1 },
+	{ "TelegramDesktop",	"telegram-desktop", 	NULL,   		1 << 2,			1,			0,           	-1 },
+	{ "Geany",  			"geany",     			NULL,   		1 << 3,			1,			0,           	-1 },
+	{ "PPSSPPSDL",  		"PPSSPPSDL",     		NULL,   		1 << 4,			1,			1,				-1 },   //PPSSPP AppImage
+	{ "dolphin-emu",  		"dolphin-emu",     		NULL,  			1 << 4,			1,			0,          	-1 },		// pacman
+	{ "mGBA",  				"AppRun.wrapped",   	NULL, 			1 << 4,			1,			0,				-1 },   //mGBA AppImage
+	{ "Pcsx2",  			"pcsx2",     			NULL, 			1 << 4,			1,			0,				-1 },
+	{ "mpv",  				"gl",     				NULL,   		1 << 5,			1,			0,           	-1 },
+	{ "Pcmanfm",  			"pcmanfm",     			NULL,   		1 << 6,			1,			0,           	-1 },
 };
 
 /* layout(s) */
@@ -63,7 +63,7 @@ static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen win
 static const Layout layouts[] = {
 	/* symbol				arrange function */
 	{ "[]=",					tile },    /* first entry is default */
-	{ "[Monocle]",   	monocle }, /* a single big window */	
+	{ "[Monocle]",   			monocle }, /* a single big window */	
 	{ "[@]",					spiral },
 	{ "[\\]",					dwindle },
 	{ "H[]",					deck },
