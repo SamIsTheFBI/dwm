@@ -40,6 +40,7 @@ static const Rule rules[] = {
 	
 	/* class				instance				title			tags		switchtotag	isfloating		monitor */
 	{ "st-256color",		"st-256color",   		NULL,  			0,				0,          0,           	-1 },
+	{ "copyq",				"copyq",   				NULL,  			0,				0,          1,           	-1 },
 	{ "Chromium",  			"chromium",				NULL,   		1 << 1,			1,			0,           	-1 },
 	{ "TelegramDesktop",	"telegram-desktop", 	NULL,   		1 << 2,			1,			0,           	-1 },
 	{ "Geany",  			"geany",     			NULL,   		1 << 3,			1,			0,           	-1 },
@@ -153,6 +154,10 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,		XK_comma,				cyclelayout,    		{.i = -1 } },
 	{ MODKEY|ControlMask,   XK_period,			cyclelayout,    		{.i = +1 } },
 	{ ALTKEY, 							XK_Tab,					spawn,							SHCMD("rofi -show window")},
+	{ MODKEY|ALTKEY,        XK_Left,				spawn,        	SHCMD("xrandr --output eDP --rotate left") },
+	{ MODKEY|ALTKEY,        XK_Right,				spawn,        	SHCMD("xrandr --output eDP --rotate right") },
+	{ MODKEY|ALTKEY,        XK_Up,					spawn,        	SHCMD("xrandr --output eDP --rotate normal") },
+	{ MODKEY|ALTKEY,        XK_Down,				spawn,        	SHCMD("xrandr --output eDP --rotate inverted") },
 
 	/*__dmenu_stuff_*/
 	/* modifier			key	   	function			argument */
