@@ -41,6 +41,7 @@ static const Rule rules[] = {
 	/* class				instance				title			tags		switchtotag	isfloating		monitor */
 	{ "st-256color",		"st-256color",   		NULL,  			0,				0,          0,           	-1 },
 	{ "copyq",				"copyq",   				NULL,  			0,				0,          1,           	-1 },
+	{ "Doublecmd",			"doublecmd",   			NULL,  			0,				0,          1,           	-1 },
 	{ "Chromium",  			"chromium",				NULL,   		1 << 1,			1,			0,           	-1 },
 	{ "TelegramDesktop",	"telegram-desktop", 	NULL,   		1 << 2,			1,			0,           	-1 },
 	{ "Geany",  			"geany",     			NULL,   		1 << 3,			1,			0,           	-1 },
