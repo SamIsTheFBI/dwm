@@ -20,6 +20,11 @@ static const unsigned int ulinevoffset	= 0;	/* how far above the bottom of the b
 static const int ulineall 				= 0;	/* 1 to show underline on all tags, 0 for just the active ones */
 
 #include "colors-wal-dwm.h"
+static const char *colors[][3]      = {
+    /*               fg           bg         border                         */
+    [SchemeNorm] = { norm_fg,     norm_bg,   norm_border }, // unfocused wins
+    [SchemeSel]  = { sel_fg,      sel_bg,    sel_border },  // the focused win
+};
 
 static const unsigned int alphas[][3]      = {
 		/*               fg      bg        border     */
