@@ -189,22 +189,23 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                      			7)
 	TAGKEYS(                        XK_9,                      			8)
 
-
 	/*__Xf86/Multimedia_Keys_(mostly)__*/
 	/* modifier,		key,			function,	argument */
-	{ 0, 				XF86XK_AudioMute,   		spawn,		SHCMD("volume tmute")},
-	{ 0, 				XF86XK_AudioRaiseVolume, 	spawn,		SHCMD("volume incr")},
-	{ 0, 				XF86XK_AudioLowerVolume, 	spawn,		SHCMD("volume decr")},
-	{ 0, 				XF86XK_MonBrightnessUp,  	spawn,		SHCMD("shine incr")},
-	{ 0, 				XF86XK_MonBrightnessDown, 	spawn,		SHCMD("shine decr")},
-	{ 0, 				XK_Print, 					spawn,		SHCMD("screencap")},
-	{ MODKEY, 			XK_Print, 					spawn,		SHCMD("screencap fullsave")},
-	{ ShiftMask, 		XK_Print, 					spawn,		SHCMD("screencap selectcopy")},
-	{ MODKEY|ShiftMask, XK_Print, 					spawn,		SHCMD("screencap selectsave")},
-	{ 0,				XF86XK_AudioNext,			spawn,		SHCMD("mpc next")},
-	{ 0,				XF86XK_AudioPrev,			spawn,		SHCMD("mpc prev")},	
-	{ 0,				XF86XK_AudioPlay,			spawn,		SHCMD("mpc toggle")},
-	{ MODKEY, 			XK_z, 						spawn,		SHCMD("touchpadtap")},
+	{ 0,					XF86XK_AudioMute,   		spawn,		SHCMD("volume tmute")},
+	{ 0,					XF86XK_AudioRaiseVolume, 	spawn,		SHCMD("volume incr")},
+	{ 0,					XF86XK_AudioLowerVolume, 	spawn,		SHCMD("volume decr")},
+	{ 0,					XF86XK_MonBrightnessUp,  	spawn,		SHCMD("shine incr")},
+	{ 0,					XF86XK_MonBrightnessDown, 	spawn,		SHCMD("shine decr")},
+	{ 0,					XK_Print, 					spawn,		SHCMD("screencap")},
+	{ MODKEY,				XK_Print, 					spawn,		SHCMD("screencap fullsave")},
+	{ ShiftMask,			XK_Print, 					spawn,		SHCMD("screencap selectcopy")},
+	{ MODKEY|ShiftMask, 	XK_Print, 					spawn,		SHCMD("screencap selectsave")},
+	{ ControlMask,			XK_Print, 					spawn,		SHCMD("screencap actwincopy")},
+	{ MODKEY|ControlMask,	XK_Print, 					spawn,		SHCMD("screencap actwinsave")},
+	{ 0,					XF86XK_AudioNext,			spawn,		SHCMD("mpc next")},
+	{ 0,					XF86XK_AudioPrev,			spawn,		SHCMD("mpc prev")},	
+	{ 0,					XF86XK_AudioPlay,			spawn,		SHCMD("mpc toggle")},
+	{ MODKEY,				XK_z, 						spawn,		SHCMD("touchpadtap")},
 };
 
 /* button definitions */
