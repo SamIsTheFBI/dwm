@@ -136,11 +136,6 @@ static Key keys[] = {
 	{ MODKEY,               XK_Tab,					view,           		{0} },
 	{ MODKEY|ShiftMask,     XK_c,						killclient,     		{0} },
 	{ MODKEY,             	XK_f,						togglefullscr,  		{0} },
-	{ MODKEY,               XK_t,						setlayout,      		{.v = &layouts[0]} },  //Tiling
-	{ MODKEY,               XK_y,						setlayout,      		{.v = &layouts[1]} },  //Monocle
-	{ MODKEY,               XK_u,						setlayout,      		{.v = &layouts[2]} },  //Spiral
-	{ MODKEY,               XK_i,						setlayout,      		{.v = &layouts[3]} },  //Dwindle
-	{ MODKEY,               XK_o,						setlayout,      		{.v = &layouts[4]} },  //Deck
 	{ MODKEY,               XK_space,				setlayout,      		{0} },
 	{ MODKEY|ShiftMask,     XK_space,				togglefloating, 		{0} },
 	{ MODKEY,               XK_0,						view,           		{.ui = ~0 } },
@@ -169,15 +164,14 @@ static Key keys[] = {
 	{ MODKEY|ALTKEY,        XK_Up,					spawn,        	SHCMD("xrandr --output eDP --rotate normal") },
 	{ MODKEY|ALTKEY,        XK_Down,				spawn,        	SHCMD("xrandr --output eDP --rotate inverted") },
 
-	/*__dmenu_stuff_*/
 	/* modifier			key	   	function			argument */
 	{ MODKEY,      XK_x,    	spawn,      SHCMD("sysact")},
 	{ MODKEY,      XK_m,    	spawn,      SHCMD("watchmedia")},
 	{ MODKEY,			 XK_a,    	spawn,      SHCMD("rofi -show drun -show-icons -theme ~/.config/rofi/applauncher.rasi")},
 	{ MODKEY,			 XK_s,    	spawn,      SHCMD("playt-beta")},
 	{ MODKEY,			 XK_c,    	spawn,      SHCMD("colpick")},
+	{ MODKEY,			 XK_t,    	spawn,      SHCMD("colorscheme-changer")},
 
-	/*__Switching_Tags__*/
 	/*														tag no.*/
 	TAGKEYS(                        XK_1,                      			0)
 	TAGKEYS(                        XK_2,                      			1)
