@@ -20,7 +20,7 @@ static const unsigned int ulinevoffset	= 0;	/* how far above the bottom of the b
 static const int ulineall 				= 0;	/* 1 to show underline on all tags, 0 for just the active ones */
 
 #include "dwm-colors.h"
-static const char *colors[][3]      = {
+static char *colors[][3]      = {
     /*               fg           bg         border                         */
     [SchemeNorm] = { norm_fg,     norm_bg,   norm_border }, // unfocused wins
     [SchemeSel]  = { sel_fg,      sel_bg,    sel_border },  // the focused win
@@ -155,6 +155,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,     XK_minus,				togglegaps,     		{0} },
 	{ MODKEY|ShiftMask,     XK_equal,				defaultgaps,    		{0} },
 	{ MODKEY,             	XK_F5,					quit,           		{0} },
+	{ MODKEY|ControlMask,             	XK_F5,					xrdb,           		{.v = NULL} },
 	{ ControlMask,         	XK_F5,					quit,           		{1} },
 	{ MODKEY|ControlMask,		XK_comma,				cyclelayout,    		{.i = -1 } },
 	{ MODKEY|ControlMask,   XK_period,			cyclelayout,    		{.i = +1 } },
