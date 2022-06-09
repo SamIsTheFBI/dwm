@@ -19,7 +19,14 @@ static const unsigned int ulinestroke	= 2;	/* thickness / height of the underlin
 static const unsigned int ulinevoffset	= 0;	/* how far above the bottom of the bar the line should appear */
 static const int ulineall 				= 0;	/* 1 to show underline on all tags, 0 for just the active ones */
 
-#include "dwm-colors.h"
+static char norm_fg[] = "#EADAB1";
+static char norm_bg[] = "#282828";
+static char norm_border[] = "#788997";
+
+static char sel_fg[] = "#EADAB1";
+static char sel_bg[] = "#C3763A";
+static char sel_border[] = "#F4B46D";
+
 static char *colors[][3]      = {
     /*               fg           bg         border                         */
     [SchemeNorm] = { norm_fg,     norm_bg,   norm_border }, // unfocused wins
@@ -104,7 +111,7 @@ static const char *dmenucmd[] 			=	{ "dmenu_run", "-m", dmenumon, "-fn", dmenufo
 static const char *termcmd[]        = { "st",                NULL };
 static const char *browsercmd[]     = { "chromium",          NULL };
 static const char *chatapp[]        = { "telegram-desktop",  NULL };
-static const char *txteditor[]	    = { "geany",             NULL };
+// static const char *txteditor[]	    = { "geany",             NULL };
 static const char *fileman[]	    	= { "thunar", 	     		 NULL };
 
 #include <X11/XF86keysym.h>
@@ -119,8 +126,7 @@ static Key keys[] = {
 	{MODKEY|ShiftMask,       XK_w,      	spawn,      {.v = browsercmd} },
 	{MODKEY|ShiftMask,       XK_m,      	spawn,      {.v = chatapp} },
 	{MODKEY|ShiftMask,       XK_h,      	spawn,      SHCMD("st htop") },
-	{MODKEY|ShiftMask,       XK_e,      	spawn,      {.v = txteditor} },
-	{MODKEY,             	   XK_e,      	spawn,      {.v = fileman} },
+	{MODKEY|ShiftMask,       XK_e,      	spawn,      {.v = fileman} },
 
 
         /*__Window_Management_ig_*/
@@ -140,20 +146,14 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,     XK_space,				togglefloating, 		{0} },
 	{ MODKEY,               XK_0,						view,           		{.ui = ~0 } },
 	{ MODKEY|ShiftMask,     XK_0,						tag,            		{.ui = ~0 } },
-	{ MODKEY|ShiftMask,     XK_comma,				focusmon,       		{.i = -1 } },
-	{ MODKEY|ShiftMask,     XK_period,				focusmon,       		{.i = +1 } },
-	{ MODKEY|ShiftMask,     XK_comma,				tagmon,         		{.i = -1 } },
-	{ MODKEY|ShiftMask,     XK_period,				tagmon,         		{.i = +1 } },
+	{ ControlMask,     XK_comma,				focusmon,       		{.i = -1 } },
+	{ ControlMask,     XK_period,				focusmon,       		{.i = +1 } },
+	{ ControlMask|ShiftMask,     XK_comma,				tagmon,         		{.i = -1 } },
+	{ ControlMask|ShiftMask,     XK_period,				tagmon,         		{.i = +1 } },
 	{ MODKEY|ControlMask,	XK_Right,				viewnext,				{0} },
 	{ MODKEY|ControlMask,	XK_Left,				viewprev,				{0} },
 	{ MODKEY|ShiftMask,		XK_Right,				tagtonext,				{0} },
 	{ MODKEY|ShiftMask,		XK_Left,				tagtoprev,				{0} },
-	{ MODKEY,               XK_minus,				incrgaps,        		{.i = -5 } },	
-	{ MODKEY|ALTKEY,        XK_minus,				incrigaps,        	{.i = -5 } },
-	{ MODKEY,               XK_equal,				incrgaps,        		{.i = +5 } },	
-	{ MODKEY|ALTKEY,        XK_equal,				incrigaps,        	{.i = +5 } },
-	{ MODKEY|ShiftMask,     XK_minus,				togglegaps,     		{0} },
-	{ MODKEY|ShiftMask,     XK_equal,				defaultgaps,    		{0} },
 	{ MODKEY,             	XK_F5,					quit,           		{0} },
 	{ MODKEY|ControlMask,             	XK_F5,					xrdb,           		{.v = NULL} },
 	{ ControlMask,         	XK_F5,					quit,           		{1} },
@@ -165,6 +165,26 @@ static Key keys[] = {
 	{ MODKEY|ALTKEY,        XK_Up,					spawn,        	SHCMD("xrandr --output eDP --rotate normal") },
 	{ MODKEY|ALTKEY,        XK_Down,				spawn,        	SHCMD("xrandr --output eDP --rotate inverted") },
 
+	// Gaps
+	{ MODKEY,               XK_minus,				incrgaps,        		{.i = -5 } },	
+	{ MODKEY,               XK_equal,				incrgaps,        		{.i = +5 } },	
+	{ MODKEY|ShiftMask,     XK_minus,				togglegaps,     		{0} },
+	{ MODKEY|ShiftMask,     XK_equal,				defaultgaps,    		{0} },
+
+	{ MODKEY|ALTKEY,        XK_minus,				incrigaps,        	{.i = -5 } },
+	{ MODKEY|ALTKEY,        XK_equal,				incrigaps,        	{.i = +5 } },
+	{ ALTKEY,        		XK_minus,				incrihgaps,        	{.i = -5 } },
+	{ ALTKEY,        		XK_equal,				incrihgaps,        	{.i = +5 } },
+	{ ALTKEY|ShiftMask,     XK_minus,				incrivgaps,        	{.i = -5 } },
+	{ ALTKEY|ShiftMask,     XK_equal,				incrivgaps,        	{.i = +5 } },
+	
+	{ MODKEY|ControlMask,   XK_minus,				incrogaps,        	{.i = -5 } },
+	{ MODKEY|ControlMask,   XK_equal,				incrogaps,        	{.i = +5 } },
+	{ ControlMask,   		XK_minus,				incrohgaps,        	{.i = -5 } },
+	{ ControlMask,   		XK_equal,				incrohgaps,        	{.i = +5 } },
+	{ ControlMask|ShiftMask,XK_minus,				incrovgaps,        	{.i = -5 } },
+	{ ControlMask|ShiftMask,XK_equal,				incrovgaps,        	{.i = +5 } },
+
 	/* modifier			key	   	function			argument */
 	{ MODKEY,      XK_x,    	spawn,      SHCMD("sysact")},
 	{ MODKEY,      XK_m,    	spawn,      SHCMD("watchmedia")},
@@ -172,6 +192,7 @@ static Key keys[] = {
 	{ MODKEY,			 XK_s,    	spawn,      SHCMD("playt-beta")},
 	{ MODKEY,			 XK_c,    	spawn,      SHCMD("colpick")},
 	{ MODKEY,			 XK_t,    	spawn,      SHCMD("colorscheme-changer")},
+	{ MODKEY,			 XK_e,    	spawn,      SHCMD("cat ~/emoji-list | dmenu -l 12 -i | awk '{print$NF}' | xclip -r -sel c")},
 
 	/*														tag no.*/
 	TAGKEYS(                        XK_1,                      			0)
