@@ -32,6 +32,27 @@
 | `control`+`,`/`.`			| change focused monitor 						 |
 | `control`+`shift`+`,`/`.`	| Move selected window to next screen 			 |
 
+- ### Keybindings related to gaps
+
+| Key Combo         		| What it'll do                          |
+|---------------------------|----------------------------------------|
+| `super`+`shift`+`_` 	 	| toggle gaps on/off 					 |
+| `super`+`shift`+`=` 	 	| reset gaps back to default 			 | 
+| `super`+`-`/`+` 		    | decrease/increase all gaps			 | 
+| `super`+`alt`+`-`/`+` 	| decrease/increase inner all gaps		 | 
+| `super`+`control`+`-`/`+` | decrease/increase outer all gaps 		 | 
+| `alt`+`-`/`+` 			| decrease/increase inner horizontal gaps| 
+| `alt`+`shift`+`-`/`+` 	| decrease/increase inner vertical gaps  | 
+| `control`+`-`/`+` 		| decrease/increase outer horizontal gaps| 
+| `control`+`shift`+`-`/`+` | decrease/increase outer vertical gaps  | 
+
+- ### Keybindings related to border size
+
+| Key Combo         		| What it'll do                          |
+|---------------------------|----------------------------------------|
+| `super`+`;`				| Decrease border size 				     |
+| `super`+`'`				| Increase border size 				     |
+| `super`+`\`				| Reset border size 				 	 |
 
 - ### DWM Controls
 
@@ -55,19 +76,6 @@
 | `super`+`shift`+`0`             | tag active window to all tags (i.e selected window will follow the active tag) 					 |
 
 
-- ### Keybindings related to gaps
-
-| Key Combo         		| What it'll do                          |
-|---------------------------|----------------------------------------|
-| `super`+`shift`+`_` 	 	| toggle gaps on/off 					 |
-| `super`+`shift`+`=` 	 	| reset gaps back to default 			 | 
-| `super`+`-`/`+` 		    | decrease/increase all gaps			 | 
-| `super`+`alt`+`-`/`+` 	| decrease/increase inner all gaps		 | 
-| `super`+`control`+`-`/`+` | decrease/increase outer all gaps 		 | 
-| `alt`+`-`/`+` 			| decrease/increase inner horizontal gaps| 
-| `alt`+`shift`+`-`/`+` 	| decrease/increase inner vertical gaps  | 
-| `control`+`-`/`+` 		| decrease/increase outer horizontal gaps| 
-| `control`+`shift`+`-`/`+` | decrease/increase outer vertical gaps  | 
 
 
 - ### dmenu/rofi/random scripts keybindings
@@ -113,6 +121,7 @@
 - preserveonrestart
 - resizecorners
 - restartsig
+- setborderpx
 - smfact
 - statuscolors
 - switchtotag

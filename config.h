@@ -165,6 +165,11 @@ static Key keys[] = {
 	{ MODKEY|ALTKEY,        XK_Up,					spawn,        	SHCMD("xrandr --output eDP --rotate normal") },
 	{ MODKEY|ALTKEY,        XK_Down,				spawn,        	SHCMD("xrandr --output eDP --rotate inverted") },
 
+	// Border
+	{ MODKEY,             XK_semicolon, 		setborderpx,    {.i = -1 } },
+	{ MODKEY,             XK_apostrophe, 		setborderpx,    {.i = +1 } },
+	{ MODKEY,             XK_backslash, 	setborderpx,    {.i = 0 } },
+
 	// Gaps
 	{ MODKEY,               XK_minus,				incrgaps,        		{.i = -5 } },	
 	{ MODKEY,               XK_equal,				incrgaps,        		{.i = +5 } },	
