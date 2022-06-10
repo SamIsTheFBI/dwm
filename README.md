@@ -123,7 +123,7 @@
 - restartsig
 - setborderpx
 - smfact
-- statuscolors
+- status2d+xrdb
 - switchtotag
 - underlinetags
 - vanitygaps
