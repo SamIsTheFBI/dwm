@@ -1,3 +1,7 @@
+## To do:
+
+- [ ] A proper cfacts+dragcfacts patch (i hate i3 but that horizontal split resize can be pretty useful)
+
 ## DWM Keybindings that I have set up:
 
 
@@ -116,10 +120,10 @@
 - dragmfact
 - focusonnetactive
 - notitle
-- pertag
+- pertag (kind of yes kind of no)
 - placemouse
 - preserveonrestart
-- resizecorners
+- resizepoint
 - restartsig
 - setborderpx
 - smfact
