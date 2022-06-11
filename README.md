@@ -1,9 +1,6 @@
-## To do:
-
-- [ ] A proper cfacts+dragcfacts patch (i hate i3 but that horizontal split resize can be pretty useful)
-
 ## DWM Keybindings that I have set up:
 
+Super key is an alternative name for the Windows key or Command key when using Linux or BSD operating systems or software.
 
 - ### App Shortcuts:
 
@@ -19,22 +16,23 @@
 
 - ### Window Management
 
-| Key Combo             	| What it'll do                                  |
-|---------------------------|------------------------------------------------|
-| `alt`+`tab`		        | Switch windows using rofi 				 	 |
-| `super`+`b`               | toggle bar visibility                          |
-| `super`+`left`/`right key`| toggle selected window          			 	 |
-| `super`+`]`/`[`			| decrease/increase windows in master (left) side|
-| `super`+`,`/`.`			| change active window's width   			 	 |
-| `super`+`enter`			| switch selected slave window with master window|
-| `super`+`tab`				| switch to last tag 					 		 |
-| `super`+`shift`+`c`		| kill window/application 					 	 |
-| `super`+`f`				| toggle fullscreen mode 				 		 |
-| `super`+`control`+`,`/`.`	| cycle window layout 							 |
-| `super`+`space`			| toggle to last used window layout 			 |
-| `super`+`shift`+`space`	| toggle active window to floating window 		 |
-| `control`+`,`/`.`			| change focused monitor 						 |
-| `control`+`shift`+`,`/`.`	| Move selected window to next screen 			 |
+| Key Combo             	| What it'll do                                  				  |
+|---------------------------|-----------------------------------------------------------------|
+| `alt`+`tab`		        | Switch windows using rofi 				 	 				  |
+| `super`+`b`               | toggle bar visibility                          				  |
+| `super`+`left`/`right key`| toggle selected window          			 	 				  |
+| `super`+`[`/`]`			| increase/decrease windows in master (left) side				  |
+| `super`+`,`/`.`			| decrease/increase master window's "weight"     				  |
+| `super`+`shift`+`,`/`.`	| decrease/increase slave window's "weight" wrt other slave window|
+| `super`+`enter`			| switch selected slave window with master window				  |
+| `super`+`tab`				| switch to last tag											  |
+| `super`+`shift`+`c`		| kill window/application										  |
+| `super`+`f`				| toggle fullscreen mode										  |
+| `super`+`control`+`,`/`.`	| cycle window layout											  |
+| `super`+`space`			| toggle to last used window layout								  |
+| `super`+`shift`+`space`	| toggle active window to floating window						  |
+| `control`+`,`/`.`			| change focused monitor										  |
+| `control`+`shift`+`,`/`.`	| Move selected window to next screen							  |
 
 - ### Keybindings related to gaps
 
@@ -63,7 +61,7 @@
 | Key Combo       		| What it'll do                                        	   |
 |-----------------------|----------------------------------------------------------|
 | `super`+`F5`          | quit dwm session (back to tty) 						   |
-| `control`+`F5`        | reset dwm 											   |
+| `control`+`F5`        | reload dwm 											   |
 | `super`+`control`+`F5`| reload dwm & apply colors from `.Xresources` (xrdb patch)|
 
 
@@ -71,15 +69,13 @@
 
 | Key Combo               		  | What it'll do                                        											 |
 |---------------------------------|--------------------------------------------------------------------------------------------------|
-| `super`+`1-8`               	  | switch tags 				 																	 |
+| `super`+`1-9`               	  | switch tags 				 																	 |
 | `super`+`control`+`left`/`right`| change current tag to the one on its left/right 												 | 
 | `super`+`shift`+`left`/`right`  | move selected window one tag to the left/right 													 | 
-| `super`+`shift`+`1-8`           | move active window to other tags 			 													 |
-| `super`+`shift`+`control`+`1-8` | tag active window to other tags	(i.e selected window will show in the newly selected tag as well)|
+| `super`+`shift`+`1-9`           | move active window to other tags 			 													 |
+| `super`+`shift`+`control`+`1-9` | tag active window to other tags	(i.e selected window will show in the newly selected tag as well)|
 | `super`+`0`                     | select all tags (i.e view windows of all tags in current tag) 					 				 |
 | `super`+`shift`+`0`             | tag active window to all tags (i.e selected window will follow the active tag) 					 |
-
-
 
 
 - ### dmenu/rofi/random scripts keybindings
@@ -111,12 +107,26 @@
 | `Audio Play/Next/Previous`  	 | Toggle between play & pause, change to next/previous song|
 
 
+- ### Things you can do combining mouse & keyboard buttons
+
+| Keyboard+Mouse Stuff |
+|----------------------|
+| `super`+`Right Click` a floating window to resize it. |
+| `super`+`shift`+ `Left Click` a non-floating master window to change its "weight" (size). |
+| `super`+`shift`+ `Right Click` a non-floating slave window to change its "weight" (size). |
+| `super`+`Left Click` a window and drag around to move it. If non-floating window is selected, then you can drag it around to another non-floating window's place and switch with it |
+| `super`+`Left Click` a tag to send selected window to that particular tag. |
+| `Middle Click` dwm status bar (except tags side) to launch terminal. |
+| `Middle Click` a window to toggle floating state of that window. |
+
 ## Patches added:
 
 - actualfullscreen
 - adjacenttag
 - alpha
+- cfacts
 - cyclelayouts
+- dragcfact
 - dragmfact
 - focusonnetactive
 - notitle
