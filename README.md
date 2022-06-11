@@ -41,10 +41,10 @@
 | `super`+`-`/`+` 		    | decrease/increase all gaps			 | 
 | `super`+`alt`+`-`/`+` 	| decrease/increase inner all gaps		 | 
 | `super`+`control`+`-`/`+` | decrease/increase outer all gaps 		 | 
-| `alt`+`-`/`+` 			| decrease/increase inner horizontal gaps| 
-| `alt`+`shift`+`-`/`+` 	| decrease/increase inner vertical gaps  | 
-| `control`+`-`/`+` 		| decrease/increase outer horizontal gaps| 
-| `control`+`shift`+`-`/`+` | decrease/increase outer vertical gaps  | 
+| `alt`+`-`/`+` 			| decrease/increase inner vertical gaps  | 
+| `alt`+`shift`+`-`/`+` 	| decrease/increase inner horizontal gaps| 
+| `control`+`-`/`+` 		| decrease/increase outer vertical gaps	 | 
+| `control`+`shift`+`-`/`+` | decrease/increase outer horizontal gaps| 
 
 - ### Keybindings related to border size
 
