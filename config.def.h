@@ -202,6 +202,10 @@ static Key keys[] = {
 	{ MODKEY|ALTKEY,        XK_Right,				spawn,        	SHCMD("xrandr --output eDP --rotate right") },
 	{ MODKEY|ALTKEY,        XK_Up,					spawn,        	SHCMD("xrandr --output eDP --rotate normal") },
 	{ MODKEY|ALTKEY,        XK_Down,				spawn,        	SHCMD("xrandr --output eDP --rotate inverted") },
+	{MODKEY,						XK_slash, 	   hidewin, 	   {0}},
+    {MODKEY|ShiftMask, 			    XK_slash, 	   restorewin, 	   {0}},
+    {ControlMask, 					XK_slash, 	   hideotherwins,  {0}},
+    {ControlMask|ShiftMask, 		XK_slash, 	   restoreotherwins, {0}},
 
 	// Border
 	{ MODKEY,             XK_semicolon, 		setborderpx,    {.i = -1 } },

@@ -9,7 +9,7 @@ Super key is an alternative name for the Windows key or Command key when using L
 | `super`+`shift`+`enter`| launch terminal      	 |
 | `super`+`shift`+`w`    | launch web browser   	 |
 | `super`+`shift`+`m`    | launch chat app 			 |
-| `super`+`shift`+`w`    | launch htop in st terminal|
+| `super`+`shift`+`h`    | launch htop in st terminal|
 | `super`+`shift`+`e`    | launch file manager       |
 | `super`+`shift`+`c`    | kill window/application	 |
 
