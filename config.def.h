@@ -1,4 +1,4 @@
-/* appearance */
+// appearance
 static const unsigned int borderpx		= 2;        /* border pixel of windows */
 static const Gap default_gap			= {.isgap = 1, .realgap = 5, .gappx = 0};   /* gappx sets the default gap width*/
 static const unsigned int snap      	= 2;       /* snap pixel */
@@ -18,6 +18,7 @@ static const unsigned int ulinepad		= 5;	/* horizontal padding between the under
 static const unsigned int ulinestroke	= 2;	/* thickness / height of the underline */
 static const unsigned int ulinevoffset	= 0;	/* how far above the bottom of the bar the line should appear */
 static const int ulineall 				= 0;	/* 1 to show underline on all tags, 0 for just the active ones */
+static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 
 static char norm_fg[] = "#EADAB1";
 static char norm_bg[] = "#282828";
@@ -85,19 +86,17 @@ static const Rule rules[] = {
 	 */
 	// For tag masks, 1 << (n-1) where n is the tag number in which you want to open the app
 	
-	/* class				instance				title			tags		switchtotag	isfloating		monitor */
-	{ "st-256color",		"st-256color",   		NULL,  			0,				0,          0,           	-1 },
-	{ "copyq",				"copyq",   				NULL,  			0,				0,          1,           	-1 },
-	{ "Doublecmd",			"doublecmd",   			NULL,  			0,				0,          1,           	-1 },
-	{ "Chromium",  			"chromium",				NULL,   		1 << 1,			1,			0,           	-1 },
-	{ "TelegramDesktop",	"telegram-desktop", 	NULL,   		1 << 2,			1,			0,           	-1 },
-	{ "Geany",  			"geany",     			NULL,   		1 << 3,			1,			0,           	-1 },
-	{ "PPSSPPSDL",  		"PPSSPPSDL",     		NULL,   		1 << 4,			1,			1,				-1 },   //PPSSPP AppImage
-	{ "dolphin-emu",  		"dolphin-emu",     		NULL,  			1 << 4,			1,			0,          	-1 },		// pacman
-	{ "mGBA",  				"AppRun.wrapped",   	NULL, 			1 << 4,			1,			0,				-1 },   //mGBA AppImage
-	{ "Pcsx2",  			"pcsx2",     			NULL, 			1 << 4,			1,			0,				-1 },
-	{ "mpv",  				"gl",     				NULL,   		1 << 5,			1,			0,           	-1 },
-	{ "Pcmanfm",  			"pcmanfm",     			NULL,   		1 << 6,			1,			0,           	-1 },
+	/* class				instance				title			tags		switchtotag	isfloating	isterminal  noswallow	monitor */
+	{ "st-256color",		"st-256color",   		NULL,  			0,				0,          0,			1,			0,		-1 },
+	{ "Doublecmd",			"doublecmd",   			NULL,  			0,				0,          1,			0,			0,		-1 },
+	{ "Chromium",  			"chromium",				NULL,   		1 << 1,			1,			0,			0,			1,		-1 },
+	{ "TelegramDesktop",	"telegram-desktop", 	NULL,   		1 << 2,			1,			0,			0,			1,		-1 },
+	{ "PPSSPPSDL",  		"PPSSPPSDL",     		NULL,   		1 << 4,			1,			1,			1,			0,		-1 },   //PPSSPP AppImage
+	{ "dolphin-emu",  		"dolphin-emu",     		NULL,  			1 << 4,			1,			0,			1,			0,		-1 },		// pacman
+	{ "mGBA",  				"AppRun.wrapped",   	NULL, 			1 << 4,			1,			0,			1,			0,		-1 },   //mGBA AppImage
+	{ "Pcsx2",  			"pcsx2",     			NULL, 			1 << 4,			1,			0,			1,			0,		-1 },
+	{ "mpv",  				"gl",     				NULL,   		1 << 5,			1,			0,			0,			1,		-1 },
+	{ "Pcmanfm",  			"pcmanfm",     			NULL,   		1 << 6,			1,			0,			0,			1,		-1 },
 };
 
 /* layout(s) */
