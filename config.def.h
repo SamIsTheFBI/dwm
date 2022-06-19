@@ -97,6 +97,7 @@ static const Rule rules[] = {
 	{ "Pcsx2",  			"pcsx2",     			NULL, 			1 << 4,			1,			0,			1,			0,		-1 },
 	{ "mpv",  				"gl",     				NULL,   		1 << 5,			1,			0,			0,			1,		-1 },
 	{ "Pcmanfm",  			"pcmanfm",     			NULL,   		1 << 6,			1,			0,			0,			1,		-1 },
+	{ NULL,					NULL, 				"Event Tester",   		0,			0,			0,			1,			1,		-1 },
 };
 
 /* layout(s) */
