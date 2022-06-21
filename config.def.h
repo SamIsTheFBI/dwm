@@ -163,12 +163,12 @@ static Key keys[] = {
         /*__Window_Management_ig_*/
 	/* modifier							key	   					function					argument */
 	{ MODKEY,               XK_b,      			togglebar,      		{0} },
-	// { MODKEY,               XK_Left,   			focusstack,     		{.i = +1 } },
-	// { MODKEY,               XK_Right,  			focusstack,     		{.i = -1 } },
-	{ MODKEY,               XK_Left,   focusdir,       {.i = 0 } }, // left
-	{ MODKEY,               XK_Right,  focusdir,       {.i = 1 } }, // right
-	{ MODKEY,               XK_Up,     focusdir,       {.i = 2 } }, // up
-	{ MODKEY,               XK_Down,   focusdir,       {.i = 3 } }, // down
+	{ MODKEY,               XK_Left,   			focusstack,     		{.i = +1 } },
+	{ MODKEY,               XK_Right,  			focusstack,     		{.i = -1 } },
+	// { MODKEY,               XK_Left,   focusdir,       {.i = 0 } }, // left
+	// { MODKEY,               XK_Right,  focusdir,       {.i = 1 } }, // right
+	// { MODKEY,               XK_Up,     focusdir,       {.i = 2 } }, // up
+	// { MODKEY,               XK_Down,   focusdir,       {.i = 3 } }, // down
 	{ MODKEY,               XK_bracketleft, incnmaster,     		{.i = +1 } },
 	{ MODKEY,               XK_bracketright,incnmaster,     		{.i = -1 } },
 	{ MODKEY,               XK_comma,      	setmfact,       		{.f = -0.05} },
