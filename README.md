@@ -1,4 +1,4 @@
-## DWM Keybindings that I have set up:
+## Keybindings
 
 Super key is an alternative name for the Windows key or Command key when using Linux or BSD operating systems or software.
 
@@ -29,7 +29,7 @@ Super key is an alternative name for the Windows key or Command key when using L
 | `super`+`shift`+`c`		| kill window/application										  |
 | `super`+`f`				| toggle fullscreen mode										  |
 | `super`+`control`+`,`/`.`	| cycle window layout											  |
-| `super`+`space`			| toggle to last used window layout								  |
+| `super`+`space`			| disable/enable focus on floating windows                    	  |
 | `super`+`shift`+`space`	| toggle active window to floating window						  |
 | `control`+`,`/`.`			| change focused monitor										  |
 | `control`+`shift`+`,`/`.`	| Move selected window to next screen							  |
@@ -116,28 +116,31 @@ Super key is an alternative name for the Windows key or Command key when using L
 | `super`+`shift`+ `Right Click` a non-floating slave window to change its "weight" (size). |
 | `super`+`Left Click` a window and drag around to move it. If non-floating window is selected, then you can drag it around to another non-floating window's place and switch with it |
 | `super`+`Left Click` a tag to send selected window to that particular tag. |
+| `super`+`Right Click` a tag to tag selected window to that particular tag. |
 | `Middle Click` dwm status bar (except tags side) to launch terminal. |
 | `Middle Click` a window to toggle floating state of that window. |
 
-## Patches added:
+
+## Patches Applied
 
 - actualfullscreen
 - adjacenttag
-- alpha
+- canfocusfloating
 - cfacts
 - cyclelayouts
 - dragcfact
 - dragmfact
 - focusonnetactive
 - notitle
-- pertag (kind of yes kind of no)
+- pertag
 - placemouse
 - preserveonrestart
 - resizepoint
 - restartsig
 - setborderpx
 - smfact
-- status2d+xrdb
+- status2d+systray+xrdb
+- swallow
 - switchtotag
 - underlinetags
 - vanitygaps

@@ -1,33 +1,35 @@
-// appearance
-static const unsigned int borderpx		= 2;        /* border pixel of windows */
-static const Gap default_gap			= {.isgap = 1, .realgap = 5, .gappx = 0};   /* gappx sets the default gap width*/
-static const unsigned int snap      	= 2;       /* snap pixel */
-static const unsigned int gappih		= 5;       /* horiz inner gap between windows */
-static const unsigned int gappiv		= 4;       /* vert inner gap between windows */
-static const unsigned int gappoh		= 5;       /* horiz outer gap between windows and screen edge */
-static const unsigned int gappov		= 5;       /* vert outer gap between windows and screen edge */
-static const int smartgaps				= 0;        /* 1 means no outer gap when there is only one window */
-static const int showbar				= 1;        /* 0 means no bar */
-static const int topbar					= 1;        /* 0 means bottom bar */
-static const Bool viewontag				= False;     /* Switch view on tag switch */
+/* See LICENSE file for copyright and license details. */
+
+/* appearance */
+static const unsigned int borderpx  = 2;        /* border pixel of windows */
+static const unsigned int snap      = 1;       /* snap pixel */
+static const unsigned int gappih    = 5;       /* horiz inner gap between windows */
+static const unsigned int gappiv    = 4;       /* vert inner gap between windows */
+static const unsigned int gappoh    = 5;       /* horiz outer gap between windows and screen edge */
+static const unsigned int gappov    = 5;       /* vert outer gap between windows and screen edge */
+static       int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
+static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
+static const unsigned int systrayonleft = 0;   	/* 0: systray in the right corner, >0: systray on left of status text */
+static const unsigned int systrayspacing = 2;   /* systray spacing */
+static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
+static const int showsystray        = 1;     /* 0 means no systray */
+static const int showbar            = 1;     /* 0 means no bar */
+static const int topbar             = 1;     /* 0 means bottom bar */
 static const char *fonts[]				=  { "JetBrainsMono Nerd Font:style:medium:size=10","Noto Sans Mono CJK JP:style=SemiBold:size=10", "emoji:size-10" };
 static const char dmenufont[]			= "JetBrainsMono Nerd Font:style:medium:size=10";
-static const unsigned int baralpha		= 0xdf;
-static const unsigned int borderalpha	= OPAQUE;
-static const unsigned int ulinepad		= 5;	/* horizontal padding between the underline and tag */
+static const unsigned int ulinepad	= 5;	/* horizontal padding between the underline and tag */
 static const unsigned int ulinestroke	= 2;	/* thickness / height of the underline */
 static const unsigned int ulinevoffset	= 0;	/* how far above the bottom of the bar the line should appear */
-static const int ulineall 				= 0;	/* 1 to show underline on all tags, 0 for just the active ones */
+static const int ulineall 		= 0;	/* 1 to show underline on all tags, 0 for just the active ones */
+static const Bool viewontag         = True;     /* Switch view on tag switch */
 static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 
-static char norm_fg[] = "#EADAB1";
-static char norm_bg[] = "#282828";
-static char norm_border[] = "#788997";
-
-static char sel_fg[] = "#EADAB1";
-static char sel_bg[] = "#C3763A";
-static char sel_border[] = "#F4B46D";
-
+static char normbgcolor[]           = "#222222";
+static char normbordercolor[]       = "#444444";
+static char normfgcolor[]           = "#bbbbbb";
+static char selfgcolor[]            = "#eeeeee";
+static char selbordercolor[]        = "#005577";
+static char selbgcolor[]            = "#005577";
 static char termcol0[] = "#000000"; /* black   */
 static char termcol1[] = "#ff0000"; /* red     */
 static char termcol2[] = "#33ff00"; /* green   */
@@ -62,18 +64,11 @@ static char *termcolor[] = {
   termcol14,
   termcol15,
 };
-
-static char *colors[][3]      = {
-    /*               fg           bg         border                         */
-    [SchemeNorm] = { norm_fg,     norm_bg,   norm_border }, // unfocused wins
-    [SchemeSel]  = { sel_fg,      sel_bg,    sel_border },  // the focused win
+static char *colors[][3] = {
+       /*               fg           bg           border   */
+       [SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor },
+       [SchemeSel]  = { selfgcolor,  selbgcolor,  selbordercolor  },
 };
-
-static const unsigned int alphas[][3]      = {
-		/*               fg      bg        border     */
-		[SchemeNorm] = { OPAQUE, baralpha, borderalpha },
-		[SchemeSel]  = { OPAQUE, baralpha, borderalpha },
-	};
 
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9"};
@@ -96,36 +91,37 @@ static const Rule rules[] = {
 	{ "mGBA",  				"AppRun.wrapped",   	NULL, 			1 << 4,			1,			0,			1,			0,		-1 },   //mGBA AppImage
 	{ "Pcsx2",  			"pcsx2",     			NULL, 			1 << 4,			1,			0,			1,			0,		-1 },
 	{ "mpv",  				"gl",     				NULL,   		1 << 5,			1,			0,			0,			1,		-1 },
-	{ "Pcmanfm",  			"pcmanfm",     			NULL,   		1 << 6,			1,			0,			0,			1,		-1 },
+	{ "Nemo",  			"nemo",     			NULL,   		1 << 6,			1,			0,			0,			1,		-1 },
 	{ NULL,					NULL, 				"Event Tester",   		0,			0,			0,			1,			1,		-1 },
 };
 
 /* layout(s) */
-static const float mfact     = 0.5; /* factor of master area size [0.05..0.95] */
+static const float mfact     = 0.50; /* factor of master area size [0.05..0.95] */
+static const float smfact     = 0.00; /* factor of tiled clients [0.00..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
 static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
 
-#define FORCE_VSPLIT 1   /* nrowgrid layout: force two clients to always split vertically */
+#define FORCE_VSPLIT 1  /* nrowgrid layout: force two clients to always split vertically */
 #include "vanitygaps.c"
 
 static const Layout layouts[] = {
-	/* symbol				arrange function */
-	{ "[]=",					tile },    /* first entry is default */
-	{ "[Monocle]",   			monocle }, /* a single big window */	
-	{ "[@]",					spiral },
-	{ "[\\]",					dwindle },
-	{ "H[]",					deck },
-	{ "TTT",					bstack },
-	{ "===",					bstackhoriz },
-	{ "HHH",					grid },
-	{ "###",					nrowgrid },
-	{ "---",					horizgrid },
-	{ ":::",					gaplessgrid },
-	{ "|M|",					centeredmaster },
-	{ ">M>",					centeredfloatingmaster },
-	{ "><>",					NULL },    /* no layout function means floating behavior */
-	{ NULL,						NULL },
+	/* symbol     arrange function */
+	{ "[]=",      tile },    /* first entry is default */
+	{ "[M]",      monocle },
+	{ "[@]",      spiral },
+	{ "[\\]",     dwindle },
+	{ "H[]",      deck },
+	{ "TTT",      bstack },
+	{ "===",      bstackhoriz },
+	{ "HHH",      grid },
+	{ "###",      nrowgrid },
+	{ "---",      horizgrid },
+	{ ":::",      gaplessgrid },
+	{ "|M|",      centeredmaster },
+	{ ">M>",      centeredfloatingmaster },
+	{ "><>",      NULL },    /* no layout function means floating behavior */
+	{ NULL,       NULL },
 };
 
 /* key definitions */
@@ -147,7 +143,7 @@ static const char *termcmd[]        = { "st",                NULL };
 static const char *browsercmd[]     = { "chromium",          NULL };
 static const char *chatapp[]        = { "telegram-desktop",  NULL };
 // static const char *txteditor[]	    = { "geany",             NULL };
-static const char *fileman[]	    	= { "thunar", 	     		 NULL };
+static const char *fileman[]	    	= { "nemo", 	     		 NULL };
 
 #include <X11/XF86keysym.h>
 
@@ -167,8 +163,12 @@ static Key keys[] = {
         /*__Window_Management_ig_*/
 	/* modifier							key	   					function					argument */
 	{ MODKEY,               XK_b,      			togglebar,      		{0} },
-	{ MODKEY,               XK_Left,   			focusstack,     		{.i = +1 } },
-	{ MODKEY,               XK_Right,  			focusstack,     		{.i = -1 } },
+	// { MODKEY,               XK_Left,   			focusstack,     		{.i = +1 } },
+	// { MODKEY,               XK_Right,  			focusstack,     		{.i = -1 } },
+	{ MODKEY,               XK_Left,   focusdir,       {.i = 0 } }, // left
+	{ MODKEY,               XK_Right,  focusdir,       {.i = 1 } }, // right
+	{ MODKEY,               XK_Up,     focusdir,       {.i = 2 } }, // up
+	{ MODKEY,               XK_Down,   focusdir,       {.i = 3 } }, // down
 	{ MODKEY,               XK_bracketleft, incnmaster,     		{.i = +1 } },
 	{ MODKEY,               XK_bracketright,incnmaster,     		{.i = -1 } },
 	{ MODKEY,               XK_comma,      	setmfact,       		{.f = -0.05} },
@@ -180,7 +180,8 @@ static Key keys[] = {
 	{ MODKEY,               XK_Tab,					view,           		{0} },
 	{ MODKEY|ShiftMask,     XK_c,						killclient,     		{0} },
 	{ MODKEY,             	XK_f,						togglefullscr,  		{0} },
-	{ MODKEY,               XK_space,				setlayout,      		{0} },
+	// { MODKEY,               XK_space,				setlayout,      		{0} },
+  	{ MODKEY,               XK_space,      togglecanfocusfloating,   {0} },
 	{ MODKEY|ShiftMask,     XK_space,				togglefloating, 		{0} },
 	{ MODKEY,               XK_0,						view,           		{.ui = ~0 } },
 	{ MODKEY|ShiftMask,     XK_0,						tag,            		{.ui = ~0 } },
@@ -197,7 +198,7 @@ static Key keys[] = {
 	{ ControlMask,         	XK_F5,					quit,           		{1} },
 	{ MODKEY|ControlMask,		XK_comma,				cyclelayout,    		{.i = -1 } },
 	{ MODKEY|ControlMask,   XK_period,			cyclelayout,    		{.i = +1 } },
-	{ ALTKEY, 							XK_Tab,					spawn,							SHCMD("rofi -show window")},
+	{ ALTKEY, 							XK_Tab,					spawn,	SHCMD("rofi -show window -show-icons")},
 	{ MODKEY|ALTKEY,        XK_Left,				spawn,        	SHCMD("xrandr --output eDP --rotate left") },
 	{ MODKEY|ALTKEY,        XK_Right,				spawn,        	SHCMD("xrandr --output eDP --rotate right") },
 	{ MODKEY|ALTKEY,        XK_Up,					spawn,        	SHCMD("xrandr --output eDP --rotate normal") },
@@ -273,13 +274,21 @@ static Key keys[] = {
 
 /* button definitions */
 /* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
+	/* placemouse options, choose which feels more natural:
+	 *    0 - tiled position is relative to mouse cursor
+	 *    1 - tiled postiion is relative to window center
+	 *    2 - mouse pointer warps to window center
+	 *
+	 * The moveorplace uses movemouse or placemouse depending on the floating state
+	 * of the selected client. Set up individual keybindings for the two if you want
+	 * to control these separately (i.e. to retain the feature to move a tiled window
+	 * into a floating position).
+	 */
 static Button buttons[] = {
 	/* click                event mask      button          function        argument */
 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
 	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
-//{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
 	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
-//{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button1,        moveorplace,    {.i = 1} },
 	{ ClkClientWin,         MODKEY|ShiftMask,Button1,        dragmfact,    	{0} },
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
