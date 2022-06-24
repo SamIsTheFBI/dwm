@@ -131,11 +131,13 @@ Super key is an alternative name for the Windows key or Command key when using L
 - cyclelayouts
 - dragcfact
 - dragmfact
+- focusdir
 - focusonnetactive
 - notitle
 - pertag
 - placemouse
 - preserveonrestart
+- removeborder
 - resizepoint
 - restartsig
 - setborderpx
