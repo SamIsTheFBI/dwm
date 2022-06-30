@@ -86,6 +86,7 @@ Super key is an alternative name for the Windows key or Command key when using L
 | `super`+`x`  | bring up power menu (dmenu)|
 | `super`+`m`  | watchmedia script (dmenu)  |
 | `super`+`a`  | application launcher (rofi)|
+| `super`+`j`  | application launcher (jgmenu)|
 | `super`+`s`  | YouTube downloader (dmenu) |
 | `super`+`c`  | colorpicker script 		|
 | `super`+`e`  | emoji picker (dmenu)		|

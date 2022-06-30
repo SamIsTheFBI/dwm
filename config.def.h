@@ -154,6 +154,7 @@ static const char *browsercmd[]     = { "chromium",          NULL };
 static const char *chatapp[]        = { "telegram-desktop",  NULL };
 // static const char *txteditor[]	    = { "geany",             NULL };
 static const char *fileman[]	    	= { "nemo", 	     		 NULL };
+static const char *jgmenucmd[]  = { "jgmenu_run", NULL };
 
 #include <X11/XF86keysym.h>
 
@@ -249,6 +250,7 @@ static Key keys[] = {
 	{ MODKEY,			 XK_a,    	spawn,      SHCMD("rofi -show drun -show-icons -theme ~/.config/rofi/applauncher.rasi")},
 	{ MODKEY,			 XK_s,    	spawn,      SHCMD("playt-beta")},
 	{ MODKEY,			 XK_c,    	spawn,      SHCMD("colpick")},
+	{ MODKEY,			 XK_j,    	spawn,      SHCMD("jgmenu_run")},
 	{ MODKEY,			 XK_t,    	spawn,      SHCMD("colorscheme-changer")},
 	{ MODKEY,			 XK_e,    	spawn,      SHCMD("cat ~/emoji-list | dmenu -l 12 -i | awk '{print$NF}' | xclip -r -sel c")},
 
@@ -308,5 +310,6 @@ static Button buttons[] = {
 	{ ClkTagBar,            0,              Button3,        toggleview,     {0} },
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
+    { ClkRootWin,  0, Button3, spawn, {.v = jgmenucmd } },
 };
 
