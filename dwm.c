@@ -1134,7 +1134,7 @@ dragcfact(const Arg *arg)
 	restack(selmon);
 
 	if (XGrabPointer(dpy, root, False, MOUSEMASK, GrabModeAsync, GrabModeAsync,
-		None, cursor[CurResize]->cursor, CurrentTime) != GrabSuccess)
+		None, cursor[CurIronCross]->cursor, CurrentTime) != GrabSuccess)
 		return;
 	XWarpPointer(dpy, None, c->win, 0, 0, 0, 0, c->w/2, c->h/2);
 
@@ -2816,6 +2816,7 @@ setup(void)
 	xatom[XembedInfo] = XInternAtom(dpy, "_XEMBED_INFO", False);
     /* init cursors */
 	cursor[CurNormal] = drw_cur_create(drw, XC_left_ptr);
+	cursor[CurIronCross] = drw_cur_create(drw, XC_iron_cross);
 	cursor[CurResizeBR] = drw_cur_create(drw, XC_bottom_right_corner);
 	cursor[CurResizeBL] = drw_cur_create(drw, XC_bottom_left_corner);
 	cursor[CurResizeTR] = drw_cur_create(drw, XC_top_right_corner);
