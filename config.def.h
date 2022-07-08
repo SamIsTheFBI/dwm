@@ -21,7 +21,7 @@ static const unsigned int ulinepad	= 5;	/* horizontal padding between the underl
 static const unsigned int ulinestroke	= 2;	/* thickness / height of the underline */
 static const unsigned int ulinevoffset	= 0;	/* how far above the bottom of the bar the line should appear */
 static const int ulineall 		= 0;	/* 1 to show underline on all tags, 0 for just the active ones */
-static const Bool viewontag         = True;     /* Switch view on tag switch */
+static const Bool viewontag         = False;     /* Switch view on tag switch */
 static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static const unsigned int baralpha = 0xd0;
 static const unsigned int borderalpha = OPAQUE;
@@ -245,13 +245,13 @@ static Key keys[] = {
 	{ ControlMask|ShiftMask,XK_equal,				incrovgaps,        	{.i = +5 } },
 
 	/* modifier			key	   	function			argument */
-	{ MODKEY,      XK_x,    	spawn,      SHCMD("sysact")},
-	{ MODKEY,      XK_m,    	spawn,      SHCMD("watchmedia")},
+	{ MODKEY,      XK_x,    	spawn,      SHCMD("~/.local/bin/sysact")},
+	{ MODKEY,      XK_m,    	spawn,      SHCMD("~/.local/bin/watchmedia")},
 	{ MODKEY,			 XK_a,    	spawn,      SHCMD("rofi -show drun -show-icons -theme ~/.config/rofi/applauncher.rasi")},
-	{ MODKEY,			 XK_s,    	spawn,      SHCMD("playt-beta")},
-	{ MODKEY,			 XK_c,    	spawn,      SHCMD("colpick")},
+	{ MODKEY,			 XK_s,    	spawn,      SHCMD("~/.local/bin/playt")},
+	{ MODKEY,			 XK_c,    	spawn,      SHCMD("~/.local/bin/colpick")},
 	{ MODKEY,			 XK_j,    	spawn,      SHCMD("jgmenu_run")},
-	{ MODKEY,			 XK_t,    	spawn,      SHCMD("colorscheme-changer")},
+	{ MODKEY,			 XK_t,    	spawn,      SHCMD("~/.local/bin/colorscheme-changer")},
 	{ MODKEY,			 XK_e,    	spawn,      SHCMD("cat ~/emoji-list | dmenu -l 12 -i | awk '{print$NF}' | xclip -r -sel c")},
 
 	/*														tag no.*/
@@ -267,21 +267,21 @@ static Key keys[] = {
 
 	/*__Xf86/Multimedia_Keys_(mostly)__*/
 	/* modifier,		key,			function,	argument */
-	{ 0,					XF86XK_AudioMute,   		spawn,		SHCMD("volume tmute")},
-	{ 0,					XF86XK_AudioRaiseVolume, 	spawn,		SHCMD("volume incr")},
-	{ 0,					XF86XK_AudioLowerVolume, 	spawn,		SHCMD("volume decr")},
-	{ 0,					XF86XK_MonBrightnessUp,  	spawn,		SHCMD("shine incr")},
-	{ 0,					XF86XK_MonBrightnessDown, 	spawn,		SHCMD("shine decr")},
-	{ 0,					XK_Print, 					spawn,		SHCMD("screencap")},
-	{ MODKEY,				XK_Print, 					spawn,		SHCMD("screencap fullsave")},
-	{ ShiftMask,			XK_Print, 					spawn,		SHCMD("screencap selectcopy")},
-	{ MODKEY|ShiftMask, 	XK_Print, 					spawn,		SHCMD("screencap selectsave")},
-	{ ControlMask,			XK_Print, 					spawn,		SHCMD("screencap actwincopy")},
-	{ MODKEY|ControlMask,	XK_Print, 					spawn,		SHCMD("screencap actwinsave")},
-	{ 0,					XF86XK_AudioNext,			spawn,		SHCMD("media next")},
-	{ 0,					XF86XK_AudioPrev,			spawn,		SHCMD("media prev")},	
-	{ 0,					XF86XK_AudioPlay,			spawn,		SHCMD("media toggle")},
-	{ MODKEY,				XK_z, 						spawn,		SHCMD("touchpadtap")},
+	{ 0,					XF86XK_AudioMute,   		spawn,		SHCMD("~/.local/bin/volume tmute")},
+	{ 0,					XF86XK_AudioRaiseVolume, 	spawn,		SHCMD("~/.local/bin/volume incr")},
+	{ 0,					XF86XK_AudioLowerVolume, 	spawn,		SHCMD("~/.local/bin/volume decr")},
+	{ 0,					XF86XK_MonBrightnessUp,  	spawn,		SHCMD("~/.local/bin/shine incr")},
+	{ 0,					XF86XK_MonBrightnessDown, 	spawn,		SHCMD("~/.local/bin/shine decr")},
+	{ 0,					XK_Print, 					spawn,		SHCMD("~/.local/bin/screencap")},
+	{ MODKEY,				XK_Print, 					spawn,		SHCMD("~/.local/bin/screencap fullsave")},
+	{ ShiftMask,			XK_Print, 					spawn,		SHCMD("~/.local/bin/screencap selectcopy")},
+	{ MODKEY|ShiftMask, 	XK_Print, 					spawn,		SHCMD("~/.local/bin/screencap selectsave")},
+	{ ControlMask,			XK_Print, 					spawn,		SHCMD("~/.local/bin/screencap actwincopy")},
+	{ MODKEY|ControlMask,	XK_Print, 					spawn,		SHCMD("~/.local/bin/screencap actwinsave")},
+	{ 0,					XF86XK_AudioNext,			spawn,		SHCMD("~/.local/bin/media next")},
+	{ 0,					XF86XK_AudioPrev,			spawn,		SHCMD("~/.local/bin/media prev")},	
+	{ 0,					XF86XK_AudioPlay,			spawn,		SHCMD("~/.local/bin/media toggle")},
+	{ MODKEY,				XK_z, 						spawn,		SHCMD("~/.local/bin/touchpadtap")},
 };
 
 /* button definitions */
