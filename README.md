@@ -144,6 +144,7 @@ Super key is an alternative name for the Windows key or Command key when using L
 - setborderpx
 - smfact
 - status2d+systray+xrdb
+- statuscmd+status2d
 - swallow
 - switchtotag
 - underlinetags
