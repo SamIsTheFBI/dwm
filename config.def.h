@@ -152,6 +152,7 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] 			=	{ "dmenu_run", "-m", dmenumon, "-fn", dmenufont, topbar ? NULL : "-b"};
 static const char *termcmd[]        = { "st",                NULL };
+static const char *layoutmenu_cmd = "~/.local/src/dwm/layoutmenu.sh";
 static const char *browsercmd[]     = { "chromium",          NULL };
 static const char *chatapp[]        = { "telegram-desktop",  NULL };
 // static const char *txteditor[]	    = { "geany",             NULL };
@@ -251,6 +252,8 @@ static Key keys[] = {
 	/* modifier			key	   	function			argument */
 	{ MODKEY,      XK_x,    	spawn,      SHCMD("~/.local/bin/sysact")},
 	{ MODKEY,      XK_m,    	spawn,      SHCMD("~/.local/bin/watchmedia")},
+	{ MODKEY,      XK_d,    	spawn,      SHCMD("~/.local/bin/change-resolution")},
+	{ MODKEY,      XK_y,    	spawn,      SHCMD("~/.local/bin/dmenu-translate")},
 	{ MODKEY,			 XK_a,    	spawn,      SHCMD("rofi -show drun -show-icons -theme ~/.config/rofi/applauncher.rasi")},
 	{ MODKEY,			 XK_s,    	spawn,      SHCMD("~/.local/bin/playt")},
 	{ MODKEY,			 XK_c,    	spawn,      SHCMD("~/.local/bin/colpick")},
@@ -303,7 +306,7 @@ static Key keys[] = {
 static Button buttons[] = {
 	/* click                event mask      button          function        argument */
 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
-	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
+	{ ClkLtSymbol,          0,              Button3,        layoutmenu,     {0} },
 	{ ClkStatusText,        0,              Button1,        sigstatusbar,   {.i = 1} },
 	{ ClkStatusText,        0,              Button2,        sigstatusbar,   {.i = 2} },
 	{ ClkStatusText,        0,              Button3,        sigstatusbar,   {.i = 3} },
