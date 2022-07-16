@@ -17,4 +17,19 @@
 # ><> Floating Layout                 13
 # EOF
 
-cat ~/.local/src/dwm/layouts.csv | jgmenu --simple --config-file=~/.config/jgmenu/jgmenu_layoutmenu
+(
+printf "[]=   Tiled Layout,echo 0\n"
+printf "[M]   Monocle Layout,echo 1\n"
+printf "[@]   Spiral Layout,echo 2\n"
+printf "[\]   Dwindle Layout,echo 3\n"
+printf "H[]   Deck Layout,echo 4\n"
+printf "TTT   Bstack Layout,echo 5\n"
+printf "===   Bstack Horix Layout,echo 6\n"
+printf "HHH   Grid Layout,echo 7\n"
+printf "###   nrow Grid Layout,echo 8\n"
+printf "---   Horiz Grid Layout,echo 9\n"
+printf ":::   Gapless Grid Layout,echo 10\n"
+printf "|M|   Centered Master Layout,echo 11\n"
+printf ">M>   Centered Floating Master Layout,echo 12\n"
+printf "ㅤㅤㅤ   Floating Layout,echo 13\n"
+) | jgmenu --simple --config-file=~/.config/jgmenu/jgmenu_layoutmenu
