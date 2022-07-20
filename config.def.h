@@ -251,7 +251,7 @@ static Key keys[] = {
 
 	/* modifier			key	   	function			argument */
 	{ MODKEY,      XK_x,    	spawn,      SHCMD("~/.local/bin/sysact")},
-	{ MODKEY,      XK_m,    	spawn,      SHCMD("~/.local/bin/watchmedia")},
+	{ MODKEY,      XK_m,    	spawn,      SHCMD("~/.local/bin/watchmenu")},
 	{ MODKEY,      XK_d,    	spawn,      SHCMD("~/.local/bin/change-resolution")},
 	{ MODKEY,      XK_y,    	spawn,      SHCMD("~/.local/bin/dmenu-translate")},
 	{ MODKEY,			 XK_a,    	spawn,      SHCMD("rofi -show drun -show-icons -theme ~/.config/rofi/applauncher.rasi")},
