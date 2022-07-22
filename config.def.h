@@ -101,8 +101,9 @@ static const Rule rules[] = {
 	{ "mGBA",  				"AppRun.wrapped",   	NULL, 			1 << 4,			1,			0,			1,			0,		-1 },   //mGBA AppImage
 	{ "Pcsx2",  			"pcsx2",     			NULL, 			1 << 4,			1,			0,			1,			0,		-1 },
 	{ "mpv",  				"gl",     				NULL,   		1 << 5,			1,			0,			0,			1,		-1 },
-	{ "Nemo",  			"nemo",     			NULL,   		1 << 6,			1,			0,			0,			1,		-1 },
-	{ NULL,					NULL, 				"Event Tester",   		0,			0,			0,			1,			1,		-1 },
+	{ "Nemo",  			"nemo",     			    NULL,   		1 << 6,			1,			0,			0,			1,		-1 },
+	{ NULL,					NULL, 				    "Event Tester", 0,			    0,			0,			1,			1,		-1 },
+	{ NULL,					NULL, 				    "nmtui",   		0,			    0,			1,			1,			1,		-1 },
 };
 
 /* layout(s) */
