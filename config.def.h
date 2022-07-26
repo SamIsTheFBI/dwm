@@ -220,10 +220,6 @@ static Key keys[] = {
 	{ MODKEY|ALTKEY,        XK_Right,				spawn,        	SHCMD("xrandr --output eDP --rotate right") },
 	{ MODKEY|ALTKEY,        XK_Up,					spawn,        	SHCMD("xrandr --output eDP --rotate normal") },
 	{ MODKEY|ALTKEY,        XK_Down,				spawn,        	SHCMD("xrandr --output eDP --rotate inverted") },
-	{MODKEY,						XK_slash, 	   hidewin, 	   {0}},
-    {MODKEY|ShiftMask, 			    XK_slash, 	   restorewin, 	   {0}},
-    {ControlMask, 					XK_slash, 	   hideotherwins,  {0}},
-    {ControlMask|ShiftMask, 		XK_slash, 	   restoreotherwins, {0}},
 
 	// Border
 	{ MODKEY,             XK_semicolon, 		setborderpx,    {.i = -1 } },
@@ -253,6 +249,7 @@ static Key keys[] = {
 	/* modifier			key	   	function			argument */
 	{ MODKEY,      XK_x,    	spawn,      SHCMD("~/.local/bin/sysact")},
 	{ MODKEY,      XK_m,    	spawn,      SHCMD("~/.local/bin/watchmenu")},
+	{ MODKEY,      XK_u,    	spawn,      SHCMD("~/.local/bin/udsearch")},
 	{ MODKEY,      XK_d,    	spawn,      SHCMD("~/.local/bin/change-resolution")},
 	{ MODKEY,      XK_y,    	spawn,      SHCMD("~/.local/bin/dmenu-translate")},
 	{ MODKEY,			 XK_a,    	spawn,      SHCMD("rofi -show drun -show-icons -theme ~/.config/rofi/applauncher.rasi")},
@@ -274,12 +271,17 @@ static Key keys[] = {
 	TAGKEYS(                        XK_9,                      			8)
 
 	/*__Xf86/Multimedia_Keys_(mostly)__*/
-	/* modifier,		key,			function,	argument */
+	/* modifier,		    key,		                function,          argument */
 	{ 0,					XF86XK_AudioMute,   		spawn,		SHCMD("~/.local/bin/volume tmute")},
+	{ MODKEY,				XK_F6,   		                spawn,		SHCMD("~/.local/bin/volume tmute")},
 	{ 0,					XF86XK_AudioRaiseVolume, 	spawn,		SHCMD("~/.local/bin/volume incr")},
+	{ MODKEY,				XK_F8,   		                spawn,		SHCMD("~/.local/bin/volume incr")},
 	{ 0,					XF86XK_AudioLowerVolume, 	spawn,		SHCMD("~/.local/bin/volume decr")},
+	{ MODKEY,				XK_F7,   		                spawn,		SHCMD("~/.local/bin/volume decr")},
 	{ 0,					XF86XK_MonBrightnessUp,  	spawn,		SHCMD("~/.local/bin/shine incr")},
+	{ MODKEY,				XK_F3,   		                spawn,		SHCMD("~/.local/bin/shine incr")},
 	{ 0,					XF86XK_MonBrightnessDown, 	spawn,		SHCMD("~/.local/bin/shine decr")},
+	{ MODKEY,				XK_F2,   		                spawn,		SHCMD("~/.local/bin/shine decr")},
 	{ 0,					XK_Print, 					spawn,		SHCMD("~/.local/bin/screencap")},
 	{ MODKEY,				XK_Print, 					spawn,		SHCMD("~/.local/bin/screencap fullsave")},
 	{ ShiftMask,			XK_Print, 					spawn,		SHCMD("~/.local/bin/screencap selectcopy")},
@@ -287,8 +289,11 @@ static Key keys[] = {
 	{ ControlMask,			XK_Print, 					spawn,		SHCMD("~/.local/bin/screencap actwincopy")},
 	{ MODKEY|ControlMask,	XK_Print, 					spawn,		SHCMD("~/.local/bin/screencap actwinsave")},
 	{ 0,					XF86XK_AudioNext,			spawn,		SHCMD("~/.local/bin/media next")},
+	{ MODKEY,		        XK_F11,   		                spawn,		SHCMD("~/.local/bin/media next")},
 	{ 0,					XF86XK_AudioPrev,			spawn,		SHCMD("~/.local/bin/media prev")},	
+	{ MODKEY,		        XK_F9,   		                spawn,		SHCMD("~/.local/bin/media prev")},
 	{ 0,					XF86XK_AudioPlay,			spawn,		SHCMD("~/.local/bin/media toggle")},
+	{ MODKEY,		        XK_F10,   		                spawn,		SHCMD("~/.local/bin/media prev")},
 	{ MODKEY,				XK_z, 						spawn,		SHCMD("~/.local/bin/touchpadtap")},
 };
 
