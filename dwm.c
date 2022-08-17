@@ -387,7 +387,7 @@ static Atom wmatom[WMLast], netatom[NetLast], xatom[XLast];
 static int restart = 0;
 static int running = 1;
 static Cur *cursor[CurLast];
-static Clr **scheme;
+static Clr **scheme, clrborder;
 static Display *dpy;
 static Drw *drw;
 static Monitor *mons, *selmon;
@@ -1066,14 +1066,15 @@ drawstatusbar(Monitor *m, int bh, char* stext) {
 		isCode = 0;
 	text = p;
 
+    
 	w += 2; /* 1px padding on both sides */
-	ret = m->ww - w;
-	x = m->ww - w - getsystraywidth();
+	ret = m->ww - borderpx_ - w;
+	x = m->ww - borderpx_ - w - getsystraywidth();
 
 	drw_setscheme(drw, scheme[LENGTH(colors)]);
 	drw->scheme[ColFg] = scheme[SchemeNorm][ColFg];
 	drw->scheme[ColBg] = scheme[SchemeNorm][ColBg];
-	drw_rect(drw, x, 0, w, bh, 1, 1);
+	drw_rect(drw, x, borderpx_, w, bh, 1, 1);
 	x++;
 
 	/* process status text */
@@ -1084,7 +1085,7 @@ drawstatusbar(Monitor *m, int bh, char* stext) {
 
 			text[i] = '\0';
 			w = TEXTW(text) - lrpad;
-			drw_text(drw, x, 0, w, bh, 0, text, 0);
+			drw_text(drw, x, borderpx_, w, bh, 0, text, 0);
 
 			x += w;
 
@@ -1120,7 +1121,7 @@ drawstatusbar(Monitor *m, int bh, char* stext) {
 					while (text[++i] != ',');
 					int rh = atoi(text + ++i);
 
-					drw_rect(drw, rx + x, ry, rw, rh, 1, 0);
+					drw_rect(drw, rx + x, ry + borderpx_, rw, rh, 1, 0);
 				} else if (text[i] == 'f') {
 					x += atoi(text + ++i);
 				}
@@ -1134,7 +1135,7 @@ drawstatusbar(Monitor *m, int bh, char* stext) {
 
 	if (!isCode) {
 		w = TEXTW(text) - lrpad;
-		drw_text(drw, x, 0, w, bh, 0, text, 0);
+		drw_text(drw, x, borderpx_, w, bh, 0, text, 0);
 	}
 
 	drw_setscheme(drw, scheme[SchemeNorm]);
@@ -1444,10 +1445,13 @@ dragmfact(const Arg *arg)
 void
 drawbar(Monitor *m)
 {
-	int x, w, tw = 0, stw = 0;
+	int x, y=borderpx_, w, tw = 0, stw = 0;
+    
 	int boxs = drw->fonts->h / 9;
 	int boxw = drw->fonts->h / 6 + 2;
 	unsigned int i, occ = 0, urg = 0;
+    int mw = m->ww - borderpx_ * 2;
+    int th = bh - borderpx_ * 2;
 	Client *c;
 
 	if (!m->showbar)
@@ -1456,9 +1460,12 @@ drawbar(Monitor *m)
 	if(showsystray && m == systraytomon(m) && !systrayonleft)
 		stw = getsystraywidth();
 
+    XSetForeground(drw->dpy, drw->gc, clrborder.pixel);
+    XFillRectangle(drw->dpy, drw->drawable, drw->gc, 0, 0, m->ww, bh);
+
 	/* draw status first so it can be overdrawn by tags later */
 	if (m == selmon) { /* status is only drawn on selected monitor */
-		tw = statusw = m->ww - drawstatusbar(m, bh, stext);
+		tw = statusw = m->ww - drawstatusbar(m, th, stext);
 	}
 
 	resizebarwin(m);
@@ -1467,26 +1474,26 @@ drawbar(Monitor *m)
 		if (c->isurgent)
 			urg |= c->tags;
 	}
-	x = 0;
+	x = borderpx_;
 	for (i = 0; i < LENGTH(tags); i++) {
 		w = TEXTW(tags[i]);
 		drw_setscheme(drw, scheme[m->tagset[m->seltags] & 1 << i ? SchemeSel : SchemeNorm]);
-		drw_text(drw, x, 0, w, bh, lrpad / 2, tags[i], urg & 1 << i);
+		drw_text(drw, x, y, w, th, lrpad / 2, tags[i], urg & 1 << i);
 		if (ulineall || m->tagset[m->seltags] & 1 << i) /* if there are conflicts, just move these lines directly underneath both 'drw_setscheme' and 'drw_text' :) */
 			drw_rect(drw, x + ulinepad, bh - ulinestroke - ulinevoffset, w - (ulinepad * 2), ulinestroke, 1, 0);
 		if (occ & 1 << i)
-			drw_rect(drw, x + boxs, boxs, boxw, boxw,
+			drw_rect(drw, x + boxs, y + boxs, boxw, boxw,
 				m == selmon && selmon->sel && selmon->sel->tags & 1 << i,
 				urg & 1 << i);
 		x += w;
 	}
 	w = blw = TEXTW(m->ltsymbol);
 	drw_setscheme(drw, scheme[SchemeNorm]);
-	x = drw_text(drw, x, 0, w, bh, lrpad / 2, m->ltsymbol, 0);
+	x = drw_text(drw, x, y, w, th, lrpad / 2, m->ltsymbol, 0);
 
-	if ((w = m->ww - tw - stw - x) > bh) {
+	if ((w = mw - tw - stw - x) > bh) {
 			drw_setscheme(drw, scheme[SchemeNorm]);
-			drw_rect(drw, x, 0, w, bh, 1, 1);
+			drw_rect(drw, x, y, w, th, 1, 1);
 	}
 	drw_map(drw, m->barwin, 0, 0, m->ww - stw, bh);
 }
@@ -2935,7 +2942,7 @@ setup(void)
 	if (!drw_fontset_create(drw, fonts, LENGTH(fonts)))
 		die("no fonts could be loaded.");
 	lrpad = drw->fonts->h;
-	bh = drw->fonts->h + 2;
+	bh = drw->fonts->h + 2 + borderpx_ * 2;
 	updategeom();
 	/* init atoms */
 	utf8string = XInternAtom(dpy, "UTF8_STRING", False);
@@ -2975,6 +2982,7 @@ setup(void)
 	scheme[LENGTH(colors)] = drw_scm_create(drw, colors[0], alphas[i], 3);
 	for (i = 0; i < LENGTH(colors); i++)
 		scheme[i] = drw_scm_create(drw, colors[i], alphas[i], 3);
+    drw_clr_create(drw, &clrborder, normbgcolor, alphas[SchemeNorm][ColBg]);
 	/* init system tray */
 	updatesystray();
 	/* init bars */

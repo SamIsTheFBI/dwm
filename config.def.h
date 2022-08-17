@@ -2,6 +2,7 @@
 
 /* appearance */
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
+static const unsigned int borderpx_  = 5;        /* padding of statusbar */
 static const unsigned int snap      = 1;       /* snap pixel */
 static const unsigned int gappih    = 5;       /* horiz inner gap between windows */
 static const unsigned int gappiv    = 4;       /* vert inner gap between windows */
@@ -19,7 +20,7 @@ static const char *fonts[]				=  { "JetBrainsMono Nerd Font:style:medium:size=10
 static const char dmenufont[]			= "JetBrainsMono Nerd Font:style:medium:size=10";
 static const unsigned int ulinepad	= 5;	/* horizontal padding between the underline and tag */
 static const unsigned int ulinestroke	= 2;	/* thickness / height of the underline */
-static const unsigned int ulinevoffset	= 0;	/* how far above the bottom of the bar the line should appear */
+static const unsigned int ulinevoffset	= 5;	/* how far above the bottom of the bar the line should appear */
 static const int ulineall 		= 0;	/* 1 to show underline on all tags, 0 for just the active ones */
 static const Bool viewontag         = False;     /* Switch view on tag switch */
 static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
@@ -27,6 +28,7 @@ static const unsigned int baralpha = 0xd0;
 static const unsigned int borderalpha = OPAQUE;
 static const unsigned int rmborder = 1; /* Set to 1 to remove border when only one window is visible on screen */
 
+static char col_borderbar[]   = "#ff0000";
 static char normbgcolor[]           = "#222222";
 static char normbordercolor[]       = "#444444";
 static char normfgcolor[]           = "#bbbbbb";
@@ -94,7 +96,7 @@ static const Rule rules[] = {
 	/* class				instance				title			tags		switchtotag	isfloating	isterminal  noswallow	monitor */
 	{ "st-256color",		"st-256color",   		NULL,  			0,				0,          0,			1,			0,		-1 },
 	{ "Doublecmd",			"doublecmd",   			NULL,  			0,				0,          1,			0,			0,		-1 },
-	{ "Chromium",  			"chromium",				NULL,   		1 << 1,			1,			0,			0,			1,		-1 },
+	{ "Chromium",  			"chromium",				NULL,   		1 << 1,		    0,			0,			1,			1,		-1 },
 	{ "TelegramDesktop",	"telegram-desktop", 	NULL,   		1 << 2,			1,			0,			0,			1,		-1 },
 	{ "PPSSPPSDL",  		"PPSSPPSDL",     		NULL,   		1 << 4,			1,			1,			1,			0,		-1 },   //PPSSPP AppImage
 	{ "dolphin-emu",  		"dolphin-emu",     		NULL,  			1 << 4,			1,			0,			1,			0,		-1 },		// pacman
@@ -104,6 +106,7 @@ static const Rule rules[] = {
 	{ "Nemo",  			"nemo",     			    NULL,   		1 << 6,			1,			0,			0,			1,		-1 },
 	{ NULL,					NULL, 				    "Event Tester", 0,			    0,			0,			1,			1,		-1 },
 	{ NULL,					NULL, 				    "nmtui",   		0,			    0,			1,			1,			1,		-1 },
+	{ NULL,					NULL, 				    "htop",   		0,			    0,			1,			1,			1,		-1 },
 };
 
 /* layout(s) */
@@ -252,6 +255,9 @@ static Key keys[] = {
 	{ MODKEY,      XK_u,    	spawn,      SHCMD("~/.local/bin/udsearch")},
 	{ MODKEY,      XK_d,    	spawn,      SHCMD("~/.local/bin/change-resolution")},
 	{ MODKEY,      XK_y,    	spawn,      SHCMD("~/.local/bin/dmenu-translate")},
+	{ MODKEY,      XK_i,    	spawn,      SHCMD("~/.local/bin/audio-toggle")},
+	{ MODKEY,      XK_o,    	spawn,      SHCMD("~/.local/bin/audio-toggle system")},
+	{ MODKEY,	   XK_g,    	spawn,      SHCMD("xdotool getactivewindow getwindowclassname | dmenu -p 'Selected Window Class Name:'")},
 	{ MODKEY,			 XK_a,    	spawn,      SHCMD("rofi -show drun -show-icons -theme ~/.config/rofi/applauncher.rasi")},
 	{ MODKEY,			 XK_s,    	spawn,      SHCMD("~/.local/bin/playt")},
 	{ MODKEY,			 XK_c,    	spawn,      SHCMD("~/.local/bin/colpick")},
@@ -293,7 +299,7 @@ static Key keys[] = {
 	{ 0,					XF86XK_AudioPrev,			spawn,		SHCMD("~/.local/bin/media prev")},	
 	{ MODKEY,		        XK_F9,   		                spawn,		SHCMD("~/.local/bin/media prev")},
 	{ 0,					XF86XK_AudioPlay,			spawn,		SHCMD("~/.local/bin/media toggle")},
-	{ MODKEY,		        XK_F10,   		                spawn,		SHCMD("~/.local/bin/media prev")},
+	{ MODKEY,		        XK_F10,   		                spawn,		SHCMD("~/.local/bin/media toggle")},
 	{ MODKEY,				XK_z, 						spawn,		SHCMD("~/.local/bin/touchpadtap")},
 };
 
