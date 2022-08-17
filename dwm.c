@@ -1460,7 +1460,7 @@ drawbar(Monitor *m)
 	if(showsystray && m == systraytomon(m) && !systrayonleft)
 		stw = getsystraywidth();
 
-    XSetForeground(drw->dpy, drw->gc, clrborder.pixel);
+	XSetForeground(dpy, drw->gc, scheme[SchemeNorm][ColBg].pixel);
     XFillRectangle(drw->dpy, drw->drawable, drw->gc, 0, 0, m->ww, bh);
 
 	/* draw status first so it can be overdrawn by tags later */
@@ -1977,6 +1977,7 @@ loadxrdb()
       if (xrdb != NULL) {
         XRDB_LOAD_COLOR("dwm.norm_border", normbordercolor);
         XRDB_LOAD_COLOR("dwm.norm_bg", normbgcolor);
+        XRDB_LOAD_COLOR("dwm.norm_bg", col_borderbar);
         XRDB_LOAD_COLOR("dwm.norm_fg", normfgcolor);
         XRDB_LOAD_COLOR("dwm.sel_border", selbordercolor);
         XRDB_LOAD_COLOR("dwm.sel_bg", selbgcolor);
@@ -2980,9 +2981,9 @@ setup(void)
 	/* init appearance */
 	scheme = ecalloc(LENGTH(colors) + 1, sizeof(Clr *));
 	scheme[LENGTH(colors)] = drw_scm_create(drw, colors[0], alphas[i], 3);
+    drw_clr_create(drw, &clrborder, col_borderbar, alphas[SchemeNorm][ColBg]);
 	for (i = 0; i < LENGTH(colors); i++)
 		scheme[i] = drw_scm_create(drw, colors[i], alphas[i], 3);
-    drw_clr_create(drw, &clrborder, normbgcolor, alphas[SchemeNorm][ColBg]);
 	/* init system tray */
 	updatesystray();
 	/* init bars */

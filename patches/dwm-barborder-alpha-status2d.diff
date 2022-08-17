@@ -1,4 +1,7 @@
-This is basically bar border patch but preconfigured to be used after patching with status2d & alpha patches. I just set col_borderbar to normbgcolor so now it looks like it is padding and not an extra border, applied this border and added a few extra args that it would need (alpha patch).
+This is basically bar border patch but preconfigured to be used after patching 
+with status2d, alpha & xrdb patches. 
+I just set col_borderbar to normbgcolor so now it looks like it is padding and not an extra border,
+and added a few extra args that it would need (alpha patch).
 
 ---
 diff --git a/config.def.h b/config.def.h
@@ -10,6 +13,7 @@ index e2c7174..fd70b58 100644
  /* appearance */
  static const unsigned int borderpx  = 2;        /* border pixel of windows */
 +static const unsigned int borderpx_  = 5;        /* padding of statusbar */
++static char col_borderbar[]   = "#ff0000";
  static const unsigned int snap      = 1;       /* snap pixel */
  static const unsigned int gappih    = 5;       /* horiz inner gap between windows */
  static const unsigned int gappiv    = 4;       /* vert inner gap between windows */
@@ -18,6 +22,14 @@ diff --git a/dwm.c b/dwm.c
 index 7949d09..0c0ff28 100644
 --- a/dwm.c
 +++ b/dwm.c
+@@ -1977,6 +1977,7 @@ loadxrdb()
+       if (xrdb != NULL) {
+         XRDB_LOAD_COLOR("dwm.norm_border", normbordercolor);
+         XRDB_LOAD_COLOR("dwm.norm_bg", normbgcolor);
++        XRDB_LOAD_COLOR("dwm.norm_bg", col_borderbar);
+         XRDB_LOAD_COLOR("dwm.norm_fg", normfgcolor);
+         XRDB_LOAD_COLOR("dwm.sel_border", selbordercolor);
+         XRDB_LOAD_COLOR("dwm.sel_bg", selbgcolor);
 @@ -387,7 +387,7 @@ static Atom wmatom[WMLast], netatom[NetLast], xatom[XLast];
  static int restart = 0;
  static int running = 1;
@@ -92,7 +104,7 @@ index 7949d09..0c0ff28 100644
  	if(showsystray && m == systraytomon(m) && !systrayonleft)
  		stw = getsystraywidth();
  
-+    XSetForeground(drw->dpy, drw->gc, clrborder.pixel);
++    XSetForeground(dpy, drw->gc, scheme[SchemeNorm][ColBg].pixel);
 +    XFillRectangle(drw->dpy, drw->drawable, drw->gc, 0, 0, m->ww, bh);
 +
  	/* draw status first so it can be overdrawn by tags later */
@@ -144,11 +156,10 @@ index 7949d09..0c0ff28 100644
  	updategeom();
  	/* init atoms */
  	utf8string = XInternAtom(dpy, "UTF8_STRING", False);
-@@ -2975,6 +2982,7 @@ setup(void)
- 	scheme[LENGTH(colors)] = drw_scm_create(drw, colors[0], alphas[i], 3);
- 	for (i = 0; i < LENGTH(colors); i++)
- 		scheme[i] = drw_scm_create(drw, colors[i], alphas[i], 3);
-+    drw_clr_create(drw, &clrborder, normbgcolor, alphas[SchemeNorm][ColBg]);
- 	/* init system tray */
- 	updatesystray();
- 	/* init bars */
+@@ -2980,9 +2981,9 @@ setup(void)
+    /* init appearance */
+    scheme = ecalloc(LENGTH(colors) + 1, sizeof(Clr *));
+    scheme[LENGTH(colors)] = drw_scm_create(drw, colors[0], alphas[i], 3);
++    drw_clr_create(drw, &clrborder, col_borderbar, alphas[SchemeNorm][ColBg]);
+    for (i = 0; i < LENGTH(colors); i++)
+        scheme[i] = drw_scm_create(drw, colors[i], alphas[i], 3);
