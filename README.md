@@ -128,6 +128,7 @@ Super key is an alternative name for the Windows key or Command key when using L
 - adjacenttag
 - alpha
 - alwayscenter
+- barborder
 - canfocusfloating
 - cfacts
 - cyclelayouts
@@ -135,7 +136,6 @@ Super key is an alternative name for the Windows key or Command key when using L
 - dragmfact
 - focusdir
 - focusonnetactive
-- notitle
 - pertag
 - placemouse
 - preserveonrestart
@@ -151,5 +151,6 @@ Super key is an alternative name for the Windows key or Command key when using L
 - underlinetags
 - vanitygaps
 - viewontag
+- winicon
 - xrdb
 - zoomswap

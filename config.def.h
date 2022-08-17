@@ -20,13 +20,16 @@ static const char *fonts[]				=  { "JetBrainsMono Nerd Font:style:medium:size=10
 static const char dmenufont[]			= "JetBrainsMono Nerd Font:style:medium:size=10";
 static const unsigned int ulinepad	= 5;	/* horizontal padding between the underline and tag */
 static const unsigned int ulinestroke	= 2;	/* thickness / height of the underline */
-static const unsigned int ulinevoffset	= 5;	/* how far above the bottom of the bar the line should appear */
+static const unsigned int ulinevoffset	= borderpx_;	/* how far above the bottom of the bar the line should appear */
 static const int ulineall 		= 0;	/* 1 to show underline on all tags, 0 for just the active ones */
 static const Bool viewontag         = False;     /* Switch view on tag switch */
 static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static const unsigned int baralpha = 0xd0;
 static const unsigned int borderalpha = OPAQUE;
 static const unsigned int rmborder = 1; /* Set to 1 to remove border when only one window is visible on screen */
+
+#define ICONSIZE 20   /* icon size */
+#define ICONSPACING 5 /* space between icon and title */
 
 static char col_borderbar[]   = "#ff0000";
 static char normbgcolor[]           = "#222222";
@@ -154,7 +157,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] 			=	{ "dmenu_run", "-m", dmenumon, "-fn", dmenufont, topbar ? NULL : "-b"};
+static const char *dmenucmd[] 			=	{ "dmenu_run", "-h", "30", "-m", dmenumon, "-fn", dmenufont, topbar ? NULL : "-b"};
 static const char *termcmd[]        = { "st",                NULL };
 static const char *layoutmenu_cmd = "~/.local/src/dwm/layoutmenu.sh";
 static const char *browsercmd[]     = { "chromium",          NULL };
@@ -250,7 +253,7 @@ static Key keys[] = {
 	{ ControlMask|ShiftMask,XK_equal,				incrovgaps,        	{.i = +5 } },
 
 	/* modifier			key	   	function			argument */
-	{ MODKEY,      XK_x,    	spawn,      SHCMD("~/.local/bin/sysact")},
+	{ MODKEY,      XK_x,    	spawn,      SHCMD("~/.local/bin/sysact dmenu -h 30 -i -p")},
 	{ MODKEY,      XK_m,    	spawn,      SHCMD("~/.local/bin/watchmenu")},
 	{ MODKEY,      XK_u,    	spawn,      SHCMD("~/.local/bin/udsearch")},
 	{ MODKEY,      XK_d,    	spawn,      SHCMD("~/.local/bin/change-resolution")},
@@ -319,6 +322,7 @@ static Button buttons[] = {
 	/* click                event mask      button          function        argument */
 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
 	{ ClkLtSymbol,          0,              Button3,        layoutmenu,     {0} },
+    { ClkWinTitle,          0,              Button2,        zoom,           {0} },
 	{ ClkStatusText,        0,              Button1,        sigstatusbar,   {.i = 1} },
 	{ ClkStatusText,        0,              Button2,        sigstatusbar,   {.i = 2} },
 	{ ClkStatusText,        0,              Button3,        sigstatusbar,   {.i = 3} },
