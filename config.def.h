@@ -4,6 +4,8 @@
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int borderpx_  = 5;        /* padding of statusbar */
 static const unsigned int snap      = 1;       /* snap pixel */
+static const int vertpad            = 5;       /* vertical padding of bar */
+static const int sidepad            = 5;       /* horizontal padding of bar */
 static const unsigned int gappih    = 5;       /* horiz inner gap between windows */
 static const unsigned int gappiv    = 4;       /* vert inner gap between windows */
 static const unsigned int gappoh    = 5;       /* horiz outer gap between windows and screen edge */

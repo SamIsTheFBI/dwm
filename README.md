@@ -129,6 +129,7 @@ Super key is an alternative name for the Windows key or Command key when using L
 - alpha
 - alwayscenter
 - barborder
+- barpadding
 - canfocusfloating
 - cfacts
 - cyclelayouts
