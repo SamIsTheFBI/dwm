@@ -159,7 +159,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] 			=	{ "dmenu_run", "-h", "30", "-m", dmenumon, "-fn", dmenufont, topbar ? NULL : "-b"};
+static const char *dmenucmd[] 			=	{ "dmenu_run", "-h", "30", "-y", "5", "-m", dmenumon, "-fn", dmenufont, topbar ? NULL : "-b"};
 static const char *termcmd[]        = { "st",                NULL };
 static const char *layoutmenu_cmd = "~/.local/src/dwm/layoutmenu.sh";
 static const char *browsercmd[]     = { "chromium",          NULL };
