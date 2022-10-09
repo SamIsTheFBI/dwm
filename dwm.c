@@ -2235,8 +2235,9 @@ monocle(Monitor *m)
 			n++;
 	if (n > 0) /* override layout symbol */
 		snprintf(m->ltsymbol, sizeof m->ltsymbol, "[%d]", n);
+    
     for (c = nexttiled(m->clients); c; c = nexttiled(c->next))
-	    resize(c, m->wx, m->wy, m->ww - 2 * c->bw, m->wh - 2 * c->bw, 0);
+	    resize(c, m->wx + m->gappoh, m->wy + m->gappov, m->ww - 2 * (m->gappoh + c->bw), m->wh - 2 * (m->gappov + c->bw), 0);
 }
 
 void
@@ -2602,7 +2603,7 @@ resizebarwin(Monitor *m) {
 	unsigned int w = m->ww;
 	if (showsystray && m == systraytomon(m) && !systrayonleft)
 		w -= getsystraywidth();
-	XMoveResizeWindow(dpy, m->barwin, m->wx + sp, m->by + vp, m->ww - 2 * sp, bh);
+	XMoveResizeWindow(dpy, m->barwin, m->wx + vp, m->by + vp, m->ww - 2 * sp, bh);
 }
 
 void
@@ -3524,8 +3525,8 @@ updatebarpos(Monitor *m)
 	m->wy = m->my;
 	m->wh = m->mh;
 	if (m->showbar) {
-		m->wh = m->wh - vertpad - bh;
-		m->by = m->topbar ? m->wy : m->wy + m->wh + vertpad;
+		m->wh = m->wh - m->gappov - bh;
+		m->by = m->topbar ? m->wy : m->wy + m->wh + m->gappov;
 		m->wy = m->topbar ? m->wy + bh + vp : m->wy;
 	} else
 		m->by = -bh - vp;
@@ -3686,8 +3687,8 @@ updatesizehints(Client *c)
 void
 updatestatus(void)
 {
-	if (!gettextprop(root, XA_WM_NAME, stext, sizeof(stext)))
-		strcpy(stext, "dwm-"VERSION);
+    if (!gettextprop(root, XA_WM_NAME, stext, sizeof(stext)))
+          strcpy(stext, "dwm-"VERSION);
 	drawbar(selmon);
 	updatesystray();
 }

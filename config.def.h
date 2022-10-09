@@ -2,7 +2,7 @@
 
 /* appearance */
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
-static const unsigned int borderpx_  = 5;        /* padding of statusbar */
+static const unsigned int borderpx_  = 5;        /* padding of statusbar elements */
 static const unsigned int snap      = 1;       /* snap pixel */
 static const int vertpad            = 5;       /* vertical padding of bar */
 static const int sidepad            = 5;       /* horizontal padding of bar */
@@ -22,16 +22,16 @@ static const char *fonts[]				=  { "JetBrainsMono Nerd Font:style:medium:size=10
 static const char dmenufont[]			= "JetBrainsMono Nerd Font:style:medium:size=10";
 static const unsigned int ulinepad	= 5;	/* horizontal padding between the underline and tag */
 static const unsigned int ulinestroke	= 2;	/* thickness / height of the underline */
-static const unsigned int ulinevoffset	= borderpx_;	/* how far above the bottom of the bar the line should appear */
+static const unsigned int ulinevoffset	= 0;	/* how far above the bottom of the bar the line should appear */
 static const int ulineall 		= 0;	/* 1 to show underline on all tags, 0 for just the active ones */
 static const Bool viewontag         = False;     /* Switch view on tag switch */
 static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
-static const unsigned int baralpha = 0xd0;
+static const unsigned int baralpha = OPAQUE;
 static const unsigned int borderalpha = OPAQUE;
 static const unsigned int rmborder = 1; /* Set to 1 to remove border when only one window is visible on screen */
 
 #define ICONSIZE 20   /* icon size */
-#define ICONSPACING 5 /* space between icon and title */
+#define ICONSPACING 3 /* space between icon and title */
 
 static char col_borderbar[]   = "#ff0000";
 static char normbgcolor[]           = "#222222";
@@ -159,7 +159,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] 			=	{ "dmenu_run", "-h", "30", "-y", "5", "-m", dmenumon, "-fn", dmenufont, topbar ? NULL : "-b"};
+static const char *dmenucmd[] 			=	{ "dmenu_run", "-p", "run: ", "-h", "30", "-y", "5", "-m", dmenumon, "-fn", dmenufont, topbar ? NULL : "-b"};
 static const char *termcmd[]        = { "st",                NULL };
 static const char *layoutmenu_cmd = "~/.local/src/dwm/layoutmenu.sh";
 static const char *browsercmd[]     = { "chromium",          NULL };
@@ -175,7 +175,6 @@ static Key keys[] = {
 
 	/*__App_Shortcuts__*/
 	/* modifier								key					function			argument */
-	{MODKEY,                 XK_p,      	spawn,      {.v = dmenucmd } },
 	{MODKEY|ShiftMask,       XK_Return, 	spawn,      {.v = termcmd } },
 	{MODKEY|ShiftMask,       XK_w,      	spawn,      {.v = browsercmd} },
 	{MODKEY|ShiftMask,       XK_m,      	spawn,      {.v = chatapp} },
@@ -255,20 +254,24 @@ static Key keys[] = {
 	{ ControlMask|ShiftMask,XK_equal,				incrovgaps,        	{.i = +5 } },
 
 	/* modifier			key	   	function			argument */
-	{ MODKEY,      XK_x,    	spawn,      SHCMD("~/.local/bin/sysact dmenu -h 30 -i -p")},
-	{ MODKEY,      XK_m,    	spawn,      SHCMD("~/.local/bin/watchmenu")},
+	{ MODKEY,      XK_q,    	spawn,      SHCMD("~/.local/bin/search")},
+	{ MODKEY,      XK_w,    	spawn,      SHCMD("~/.local/bin/watchmenu")},
+	{ MODKEY,	   XK_e,    	spawn,      SHCMD("~/.local/bin/charmap")},
+	{ MODKEY,	   XK_r,    	spawn,      SHCMD("rofi -show drun -show-icons -theme ~/.config/rofi/applauncher.rasi")},
+	{ MODKEY,	   XK_t,    	spawn,      SHCMD("~/.local/bin/colorscheme-changer")},
+	{ MODKEY,	   XK_y,    	spawn,      SHCMD("~/.local/bin/playt")},
 	{ MODKEY,      XK_u,    	spawn,      SHCMD("~/.local/bin/udsearch")},
-	{ MODKEY,      XK_d,    	spawn,      SHCMD("~/.local/bin/change-resolution")},
-	{ MODKEY,      XK_y,    	spawn,      SHCMD("~/.local/bin/dmenu-translate")},
 	{ MODKEY,      XK_i,    	spawn,      SHCMD("~/.local/bin/audio-toggle")},
 	{ MODKEY,      XK_o,    	spawn,      SHCMD("~/.local/bin/audio-toggle system")},
-	{ MODKEY,	   XK_g,    	spawn,      SHCMD("xdotool getactivewindow getwindowclassname | dmenu -p 'Selected Window Class Name:'")},
-	{ MODKEY,			 XK_a,    	spawn,      SHCMD("rofi -show drun -show-icons -theme ~/.config/rofi/applauncher.rasi")},
-	{ MODKEY,			 XK_s,    	spawn,      SHCMD("~/.local/bin/playt")},
-	{ MODKEY,			 XK_c,    	spawn,      SHCMD("~/.local/bin/colpick")},
-	{ MODKEY,			 XK_j,    	spawn,      SHCMD("jgmenu_run")},
-	{ MODKEY,			 XK_t,    	spawn,      SHCMD("~/.local/bin/colorscheme-changer")},
-	{ MODKEY,			 XK_e,    	spawn,      SHCMD("cat ~/emoji-list | dmenu -l 12 -i | awk '{print$NF}' | xclip -r -sel c")},
+	{ MODKEY,      XK_p,      	spawn,      {.v = dmenucmd } },
+	{ MODKEY,      XK_a,    	spawn,      SHCMD("~/.local/bin/ytmusic")},
+	{ MODKEY,      XK_s,    	spawn,      SHCMD("~/.local/bin/dmenu-translate")},
+	{ MODKEY,      XK_d,    	spawn,      SHCMD("~/.local/bin/change-resolution")},
+	{ MODKEY,	   XK_g,    	spawn,      SHCMD("var=$(xdotool getactivewindow getwindowclassname) && echo • | dmenu -h 30 -y 5 -p $var")},
+	{ MODKEY,      XK_x,    	spawn,      SHCMD("~/.local/bin/sysact dmenu -h 30 -i -p")},
+	{ MODKEY,	   XK_c,    	spawn,      SHCMD("~/.local/bin/colpick")},
+	{ MODKEY,	   XK_v,    	spawn,      SHCMD("copyq menu")},
+	{ MODKEY,      XK_m,    	spawn,      SHCMD("~/.local/bin/mount-device")},
 
 	/*														tag no.*/
 	TAGKEYS(                        XK_1,                      			0)
