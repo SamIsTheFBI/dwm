@@ -89,7 +89,7 @@ static const unsigned int alphas[][3]      = {
 
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9"};
-// static const char *tags[] = { "", "", "", "", "", "", ""};
+// static const char *tags[] = { "", "", "", "📖", "", "", ""};
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -98,20 +98,21 @@ static const Rule rules[] = {
 	 */
 	// For tag masks, 1 << (n-1) where n is the tag number in which you want to open the app
 	
-	/* class				instance				title			tags		switchtotag	isfloating	isterminal  noswallow	monitor */
-	{ "st-256color",		"st-256color",   		NULL,  			0,				0,          0,			1,			0,		-1 },
-	{ "Doublecmd",			"doublecmd",   			NULL,  			0,				0,          1,			0,			0,		-1 },
-	{ "Chromium",  			"chromium",				NULL,   		1 << 1,		    0,			0,			1,			1,		-1 },
-	{ "TelegramDesktop",	"telegram-desktop", 	NULL,   		1 << 2,			1,			0,			0,			1,		-1 },
-	{ "PPSSPPSDL",  		"PPSSPPSDL",     		NULL,   		1 << 4,			1,			1,			1,			0,		-1 },   //PPSSPP AppImage
-	{ "dolphin-emu",  		"dolphin-emu",     		NULL,  			1 << 4,			1,			0,			1,			0,		-1 },		// pacman
-	{ "mGBA",  				"AppRun.wrapped",   	NULL, 			1 << 4,			1,			0,			1,			0,		-1 },   //mGBA AppImage
-	{ "Pcsx2",  			"pcsx2",     			NULL, 			1 << 4,			1,			0,			1,			0,		-1 },
-	{ "mpv",  				"gl",     				NULL,   		1 << 5,			1,			0,			0,			1,		-1 },
-	{ "Nemo",  			"nemo",     			    NULL,   		1 << 6,			1,			0,			0,			1,		-1 },
-	{ NULL,					NULL, 				    "Event Tester", 0,			    0,			0,			1,			1,		-1 },
-	{ NULL,					NULL, 				    "nmtui",   		0,			    0,			1,			1,			1,		-1 },
-	{ NULL,					NULL, 				    "htop",   		0,			    0,			1,			1,			1,		-1 },
+	/* class						instance						title						tags			switchtotag	isfloating	isterminal  noswallow	monitor */
+	{ "st-256color",		"st-256color",   		NULL,						0,				0,          0,					1,					0,				-1 },
+	{ "Doublecmd",			"doublecmd",   			NULL,						0,				0,          1,					0,					0,				-1 },
+	{ "Chromium",  			"chromium",					NULL,						1 << 1,		0,					0,					0,					1,				-1 },
+	{ "TelegramDesktop","telegram-desktop", NULL,						1 << 2,		1,					0,					0,					1,				-1 },
+	{ "obsidian",				"obsidian", 				NULL,						1 << 3,		1,					0,					0,					1,				-1 },
+	{ "PPSSPPSDL",  		"PPSSPPSDL",     		NULL,						1 << 4,		1,					1,					1,					0,				-1 },   //PPSSPP AppImage
+	{ "dolphin-emu",  	"dolphin-emu",     	NULL,						1 << 4,		1,					0,					1,					0,				-1 },		// pacman
+	{ "mGBA",  					"AppRun.wrapped",   NULL,						1 << 4,		1,					0,					1,					0,				-1 },   //mGBA AppImage
+	{ "Pcsx2",  				"pcsx2",						NULL,						1 << 4,		1,					0,					1,					0,				-1 },
+	{ "mpv",  					"gl",								NULL,						1 << 5,		1,					0,					0,					1,				-1 },
+	{ "Nemo",						"nemo",							NULL,						1 << 6,		1,					0,					0,					1,				-1 },
+	{ NULL,							NULL,								"Event Tester", 0,			  0,					0,					1,					1,				-1 },
+	{ NULL,							NULL,								"nmtui",				0,			  0,					1,					1,					1,				-1 },
+	{ NULL,							NULL,								"htop",					0,			  0,					1,					1,					1,				-1 },
 };
 
 /* layout(s) */
@@ -191,8 +192,8 @@ static Key keys[] = {
 	// { MODKEY,               XK_Right,  focusdir,       {.i = 1 } }, // right
 	// { MODKEY,               XK_Up,     focusdir,       {.i = 2 } }, // up
 	// { MODKEY,               XK_Down,   focusdir,       {.i = 3 } }, // down
-	{ MODKEY|ShiftMask,             XK_j,      rotatestack,    {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_k,      rotatestack,    {.i = -1 } },
+	{ MODKEY|ShiftMask,     XK_j,      rotatestack,    {.i = +1 } },
+	{ MODKEY|ShiftMask,     XK_k,      rotatestack,    {.i = -1 } },
 	{ MODKEY,               XK_bracketleft, incnmaster,     		{.i = +1 } },
 	{ MODKEY,               XK_bracketright,incnmaster,     		{.i = -1 } },
 	{ MODKEY,               XK_comma,      	setmfact,       		{.f = -0.05} },
@@ -205,33 +206,33 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,     XK_c,						killclient,     		{0} },
 	{ MODKEY,             	XK_f,						togglefullscr,  		{0} },
 	// { MODKEY,               XK_space,				setlayout,      		{0} },
-  	{ MODKEY,               XK_space,      togglecanfocusfloating,   {0} },
+	{ MODKEY,             	XK_space,      togglecanfocusfloating,   {0} },
 	{ MODKEY|ShiftMask,     XK_space,				togglefloating, 		{0} },
 	{ MODKEY,               XK_0,						view,           		{.ui = ~0 } },
 	{ MODKEY|ShiftMask,     XK_0,						tag,            		{.ui = ~0 } },
-	{ ControlMask,     XK_comma,				focusmon,       		{.i = -1 } },
-	{ ControlMask,     XK_period,				focusmon,       		{.i = +1 } },
-	{ ControlMask|ShiftMask,     XK_comma,				tagmon,         		{.i = -1 } },
-	{ ControlMask|ShiftMask,     XK_period,				tagmon,         		{.i = +1 } },
-	{ MODKEY|ControlMask,	XK_Right,				viewnext,				{0} },
-	{ MODKEY|ControlMask,	XK_Left,				viewprev,				{0} },
-	{ MODKEY|ShiftMask,		XK_Right,				tagtonext,				{0} },
-	{ MODKEY|ShiftMask,		XK_Left,				tagtoprev,				{0} },
+	{ ControlMask,					XK_comma,				focusmon,       		{.i = -1 } },
+	{ ControlMask,					XK_period,				focusmon,       		{.i = +1 } },
+	{ ControlMask|ShiftMask,XK_comma,				tagmon,         		{.i = -1 } },
+	{ ControlMask|ShiftMask,XK_period,				tagmon,         		{.i = +1 } },
+	{ MODKEY|ControlMask,		XK_Right,				viewnext,				{0} },
+	{ MODKEY|ControlMask,		XK_Left,				viewprev,				{0} },
+	{ MODKEY|ShiftMask,			XK_Right,				tagtonext,				{0} },
+	{ MODKEY|ShiftMask,			XK_Left,				tagtoprev,				{0} },
 	{ MODKEY,             	XK_F5,					quit,           		{0} },
-	{ MODKEY|ControlMask,             	XK_F5,					xrdb,           		{.v = NULL} },
+	{ MODKEY|ControlMask,   XK_F5,					xrdb,           		{.v = NULL} },
 	{ ControlMask,         	XK_F5,					quit,           		{1} },
 	{ MODKEY|ControlMask,		XK_comma,				cyclelayout,    		{.i = -1 } },
 	{ MODKEY|ControlMask,   XK_period,			cyclelayout,    		{.i = +1 } },
-	{ ALTKEY, 							XK_Tab,					spawn,	SHCMD("rofi -show window -theme ~/.config/rofi/task-switcher.rasi")},
+	{ ALTKEY, 							XK_Tab,					spawn,	SHCMD("rofi -show window -theme ~/.config/rofi/rofitheme.rasi")},
 	{ MODKEY|ALTKEY,        XK_Left,				spawn,        	SHCMD("xrandr --output eDP --rotate left") },
 	{ MODKEY|ALTKEY,        XK_Right,				spawn,        	SHCMD("xrandr --output eDP --rotate right") },
 	{ MODKEY|ALTKEY,        XK_Up,					spawn,        	SHCMD("xrandr --output eDP --rotate normal") },
 	{ MODKEY|ALTKEY,        XK_Down,				spawn,        	SHCMD("xrandr --output eDP --rotate inverted") },
 
 	// Border
-	{ MODKEY,             XK_semicolon, 		setborderpx,    {.i = -1 } },
-	{ MODKEY,             XK_apostrophe, 		setborderpx,    {.i = +1 } },
-	{ MODKEY,             XK_backslash, 	setborderpx,    {.i = 0 } },
+	{ MODKEY,								XK_semicolon, 		setborderpx,    {.i = -1 } },
+	{ MODKEY,								XK_apostrophe, 		setborderpx,    {.i = +1 } },
+	{ MODKEY,								XK_backslash, 	setborderpx,    {.i = 0 } },
 
 	// Gaps
 	{ MODKEY,               XK_minus,				incrgaps,        		{.i = -5 } },	
@@ -257,7 +258,7 @@ static Key keys[] = {
 	{ MODKEY,      XK_q,    	spawn,      SHCMD("~/.local/bin/search")},
 	{ MODKEY,      XK_w,    	spawn,      SHCMD("~/.local/bin/watchmenu")},
 	{ MODKEY,	   XK_e,    	spawn,      SHCMD("~/.local/bin/charmap")},
-	{ MODKEY,	   XK_r,    	spawn,      SHCMD("rofi -show drun -show-icons -theme ~/.config/rofi/applauncher.rasi")},
+	{ MODKEY,	   XK_r,    	spawn,      SHCMD("rofi -show drun -show-icons -theme ~/.config/rofi/rofitheme.rasi")},
 	{ MODKEY,	   XK_t,    	spawn,      SHCMD("~/.local/bin/colorscheme-changer")},
 	{ MODKEY,	   XK_y,    	spawn,      SHCMD("~/.local/bin/playt")},
 	{ MODKEY,      XK_u,    	spawn,      SHCMD("~/.local/bin/udsearch")},
@@ -267,11 +268,12 @@ static Key keys[] = {
 	{ MODKEY,      XK_a,    	spawn,      SHCMD("~/.local/bin/ytmusic")},
 	{ MODKEY,      XK_s,    	spawn,      SHCMD("~/.local/bin/dmenu-translate")},
 	{ MODKEY,      XK_d,    	spawn,      SHCMD("~/.local/bin/change-resolution")},
-	{ MODKEY,	   XK_g,    	spawn,      SHCMD("var=$(xdotool getactivewindow getwindowclassname) && echo • | dmenu -h 30 -y 5 -p $var")},
+	{ MODKEY,	   XK_g,    	spawn,      SHCMD("var=$(xdotool getactivewindow getwindowclassname) && echo $var | dmenu -h 30 -y 5")},
 	{ MODKEY,      XK_x,    	spawn,      SHCMD("~/.local/bin/sysact dmenu -h 30 -i -p")},
 	{ MODKEY,	   XK_c,    	spawn,      SHCMD("~/.local/bin/colpick")},
 	{ MODKEY,	   XK_v,    	spawn,      SHCMD("copyq menu")},
 	{ MODKEY,      XK_m,    	spawn,      SHCMD("~/.local/bin/mount-device")},
+	{ MODKEY,      XK_n,    	spawn,      SHCMD("setsid st -e nmtui 2>/dev/null")},
 
 	/*														tag no.*/
 	TAGKEYS(                        XK_1,                      			0)
