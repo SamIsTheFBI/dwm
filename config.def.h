@@ -223,7 +223,7 @@ static Key keys[] = {
 	{ ControlMask,         	XK_F5,					quit,           		{1} },
 	{ MODKEY|ControlMask,		XK_comma,				cyclelayout,    		{.i = -1 } },
 	{ MODKEY|ControlMask,   XK_period,			cyclelayout,    		{.i = +1 } },
-	{ ALTKEY, 							XK_Tab,					spawn,	SHCMD("rofi -show window -theme ~/.config/rofi/rofitheme.rasi")},
+	{ ALTKEY, 							XK_Tab,					spawn,	SHCMD("rofi -show window -kb-accept-entry '!Alt-Tab' -kb-row-down Alt-Tab -theme ~/.config/rofi/rofitheme.rasi")},
 	{ MODKEY|ALTKEY,        XK_Left,				spawn,        	SHCMD("xrandr --output eDP --rotate left") },
 	{ MODKEY|ALTKEY,        XK_Right,				spawn,        	SHCMD("xrandr --output eDP --rotate right") },
 	{ MODKEY|ALTKEY,        XK_Up,					spawn,        	SHCMD("xrandr --output eDP --rotate normal") },
@@ -310,7 +310,7 @@ static Key keys[] = {
 	{ MODKEY,		        XK_F9,   		                spawn,		SHCMD("~/.local/bin/media prev")},
 	{ 0,					XF86XK_AudioPlay,			spawn,		SHCMD("~/.local/bin/media toggle")},
 	{ MODKEY,		        XK_F10,   		                spawn,		SHCMD("~/.local/bin/media toggle")},
-	{ MODKEY,				XK_z, 						spawn,		SHCMD("~/.local/bin/touchpadtap")},
+	{ MODKEY,      XK_z,    	spawn,      SHCMD("~/.local/bin/sleepp")},
 };
 
 /* button definitions */
