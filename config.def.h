@@ -18,8 +18,8 @@ static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display 
 static const int showsystray        = 1;     /* 0 means no systray */
 static const int showbar            = 1;     /* 0 means no bar */
 static const int topbar             = 1;     /* 0 means bottom bar */
-static const char *fonts[]				=  { "JetBrainsMono Nerd Font:style:medium:size=10","Noto Sans Mono CJK JP:style=SemiBold:size=10", "emoji:size-10" };
-static const char dmenufont[]			= "JetBrainsMono Nerd Font:style:medium:size=10";
+static const char *fonts[]				=  { "JetBrainsMono Nerd Font:style:bold:size=10","Noto Sans Mono CJK JP:style=SemiBold:size=10", "emoji:size-10" };
+static const char dmenufont[]			= "JetBrainsMono Nerd Font:style:bold:size=10";
 static const unsigned int ulinepad	= 5;	/* horizontal padding between the underline and tag */
 static const unsigned int ulinestroke	= 2;	/* thickness / height of the underline */
 static const unsigned int ulinevoffset	= 0;	/* how far above the bottom of the bar the line should appear */
