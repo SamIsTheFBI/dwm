@@ -28,7 +28,7 @@ static const Bool viewontag         = False;     /* Switch view on tag switch */
 static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static const unsigned int baralpha = OPAQUE;
 static const unsigned int borderalpha = OPAQUE;
-static const unsigned int rmborder = 1; /* Set to 1 to remove border when only one window is visible on screen */
+static const unsigned int rmborder = 0; /* Set to 1 to remove border when only one window is visible on screen */
 
 #define ICONSIZE 20   /* icon size */
 #define ICONSPACING 3 /* space between icon and title */
@@ -98,21 +98,22 @@ static const Rule rules[] = {
 	 */
 	// For tag masks, 1 << (n-1) where n is the tag number in which you want to open the app
 	
-	/* class						instance						title						tags			switchtotag	isfloating	isterminal  noswallow	monitor */
-	{ "st-256color",		"st-256color",   		NULL,						0,				0,          0,					1,					0,				-1 },
-	{ "Doublecmd",			"doublecmd",   			NULL,						0,				0,          1,					0,					0,				-1 },
-	{ "Chromium",  			"chromium",					NULL,						1 << 1,		0,					0,					0,					1,				-1 },
-	{ "TelegramDesktop","telegram-desktop", NULL,						1 << 2,		1,					0,					0,					1,				-1 },
-	{ "obsidian",				"obsidian", 				NULL,						1 << 3,		1,					0,					0,					1,				-1 },
-	{ "PPSSPPSDL",  		"PPSSPPSDL",     		NULL,						1 << 4,		1,					1,					1,					0,				-1 },   //PPSSPP AppImage
-	{ "dolphin-emu",  	"dolphin-emu",     	NULL,						1 << 4,		1,					0,					1,					0,				-1 },		// pacman
-	{ "mGBA",  					"AppRun.wrapped",   NULL,						1 << 4,		1,					0,					1,					0,				-1 },   //mGBA AppImage
-	{ "Pcsx2",  				"pcsx2",						NULL,						1 << 4,		1,					0,					1,					0,				-1 },
-	{ "mpv",  					"gl",								NULL,						1 << 5,		1,					0,					0,					1,				-1 },
-	{ "Nemo",						"nemo",							NULL,						1 << 6,		1,					0,					0,					1,				-1 },
-	{ NULL,							NULL,								"Event Tester", 0,			  0,					0,					1,					1,				-1 },
-	{ NULL,							NULL,								"nmtui",				0,			  0,					1,					1,					1,				-1 },
-	{ NULL,							NULL,								"htop",					0,			  0,					1,					1,					1,				-1 },
+	/* class						instance						title                                       tags			switchtotag	isfloating	isterminal  noswallow	monitor */
+	{ "st-256color",		"st-256color",   		NULL,                                       0,				0,          0,					1,					0,				-1 },
+	{ "Doublecmd",			"doublecmd",   			NULL,                                       0,				0,          1,					0,					0,				-1 },
+	{ "Google-chrome",  "google-chrome",		NULL,                                       1 << 1,		0,					0,					0,					1,				-1 },
+	{ "TelegramDesktop","telegram-desktop", NULL,                                       1 << 2,		1,					0,					0,					1,				-1 },
+	{ "obsidian",				"obsidian", 				NULL,                                       1 << 3,		1,					0,					0,					1,				-1 },
+	{ "PPSSPPSDL",  		"PPSSPPSDL",     		NULL,                                       1 << 4,		1,					1,					1,					0,				-1 },   //PPSSPP AppImage
+	{ "dolphin-emu",  	"dolphin-emu",     	NULL,                                       1 << 4,		1,					0,					1,					0,				-1 },		// pacman
+	{ "mGBA",  					"AppRun.wrapped",   NULL,                                       1 << 4,		1,					0,					1,					0,				-1 },   //mGBA AppImage
+	{ "Pcsx2",  				"pcsx2",						NULL,                                       1 << 4,		1,					0,					1,					0,				-1 },
+	{ "mpv",  					"gl",								NULL,                                       1 << 5,		1,					0,					0,					1,				-1 },
+	{ "Nemo",						"nemo",							NULL,                                       1 << 6,		1,					0,					0,					1,				-1 },
+	{ NULL,							NULL,								"Android Emulator - Pixel_6a_API_33:5554",  0,			  0,					0,					1,					1,				-1 },
+	{ NULL,							NULL,								"Event Tester",                             0,			  0,					0,					1,					1,				-1 },
+	{ NULL,							NULL,								"nmtui",                                    0,			  0,					1,					1,					1,				-1 },
+	{ NULL,							NULL,								"htop",                                     0,			  0,					1,					1,					1,				-1 },
 };
 
 /* layout(s) */
@@ -163,7 +164,7 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] 			=	{ "dmenu_run", "-p", "run: ", "-h", "30", "-y", "5", "-m", dmenumon, "-fn", dmenufont, topbar ? NULL : "-b"};
 static const char *termcmd[]        = { "st",                NULL };
 static const char *layoutmenu_cmd = "~/.local/src/dwm/layoutmenu.sh";
-static const char *browsercmd[]     = { "chromium",          NULL };
+static const char *browsercmd[]     = { "google-chrome-stable",          NULL };
 static const char *chatapp[]        = { "telegram-desktop",  NULL };
 // static const char *txteditor[]	    = { "geany",             NULL };
 static const char *fileman[]	    	= { "nemo", 	     		 NULL };
